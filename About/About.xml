@@ -1,27 +1,125 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>[KV] Infinite Storage</name>
-	<author>Kiame Vivacity</author>
-	<url>https://ludeon.com/forums/index.php?topic=37698.msg385779</url>
-    <supportedVersions>
-        <li>1.0</li>
-        <li>1.1</li>
-        <li>1.2</li>
-        <li>1.3</li>
-    </supportedVersions>
-	<packageId>infinitestorage.kv.rw</packageId>
-	<description>
+  <name>[KV] Infinite Storage (Continued)</name>
+  <packageId>Mlie.KVInfiniteStorage</packageId>
+  <author>Kiame Vivacity</author>
+  <url>https://github.com/emipa606/KVInfiniteStorage</url>
+  <supportedVersions>
+    <li>1.0</li>
+    <li>1.1</li>
+    <li>1.2</li>
+    <li>1.3</li>
+    <li>1.4</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of Kiame Vivacitys mod
+https://steamcommunity.com/sharedfiles/filedetails/?id=1233893175
+
+[img]https://i.imgur.com/pufA0kM.png[/img]
+
+[table]
+    [tr]
+        [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/KVInfiniteStorage][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/Be8E2qJ.png[/img][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
 Got energy?
 Need storage space?
 Infinite Storage is right for you!
 
-The amount of energy required is based off the weight of the stored items in Infinite Storage.
-I am currently tweaking energy/storage ratio and welcome input as I experiment. I have also made the ratio adjustable in Mod Settings.
+[b]Infinite Storage[/b]
+-Build Menu: Misc
+-Size: 1x1
+-Cost: 100 Metallic + 4 components
+-Research: [u]Multi Analyzer[/u] &amp;amp; [u]Infinite Storage[/u]
+-Stores: Everything except food
+-Power: 1 W per stored kg  -  this can be adjusted in Options-Mod Settings-Infinite Storage
 
-There are two 'specialty' storage units: Body Parts and Textiles. These units are capable of storing Body Parts &amp; Medicine and Leather/Wool at without energy.
+[b]Textile Storage[/b]
+-Build Menu: Misc
+-Size: 1x1
+-Cost: 50 wood/stone/steel
+-Stores: Textiles
 
-Translators:
+[b]Body Part Storage[/b]
+-Build Menu: Misc
+-Size: 1x1
+-Cost: 50 wood/stone/steel
+-Stores: Body Parts &amp;amp; Medicines
+
+[b]Silver Storage[/b]
+-Build Menu: Misc
+-Size: 1x1
+-Cost: 50 wood/stone/steel
+-Stores: Silver
+
+Safe for existing saves. For those using Body Part and/or Textile Storage see the instructions below for how to do it.
+
+Infinite Storage requires energy to compress and make available the stored items. The amount of energy required increases linearly as the weight stored increases. If Infinite Storage is not powered, nothing can be added or removed from it. For that reason it may not be a bad idea to keep some extra components, steel, and wood in an out-of-the-way stockpile.
+
+I have decided that Infinite Storage will not break down - in case all components are stored within as that would suck.
+
+There are two 'specialty' storage units: Body Parts and Textiles. These units are capable of storing Body Parts &amp;amp; Medicine and Leather/Wool without energy.
+
+Other Storage Type Mods:
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1180720427 ]Weapon Storage[/url]
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1385697110]Apparel Storage (Change Dresser)[/url]
+
+Supports:
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1180718516]Save Storage &amp;amp; Outfit Settings[/url]
+-[url=http://steamcommunity.com/sharedfiles/filedetails/?id=725956940]Expanded Prosthetics and Organ Engineering (EPOE)[/url]
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=746425621]A Dog Said[/url]
+-[url=http://steamcommunity.com/sharedfiles/filedetails/?id=943925765]Fast regen[/url]
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2034960453]While You're Up[/url] - The option "Optimize hauling to construction" will need to be disabled.
+This mod should support/hold all items added by other mods.
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1561769193]Common Sense[/url] - Disable the option for pawns to haul all the materials to craft
+
+Unsupported:
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=852998459]Architect Sense[/url] - When trying to build with stored stuff it'll say no materials were found
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=784327493]Industrial Rollers[/url] - Pullers will not be able to remove items
+-[b]Smart Medicine[/b] - Prevents doctors from getting medicine out of storage before tending to wounds. Operations will work correctly
+- [b]Best Mix[/b]
+
+[b]Troubleshooting:[/b]
+- Common Sense mod -  disable the third checkbox under “Opportunistic Jobs” (the one about hauling ingredients for a bill to stockpile).
+
+[b][url=https://ludeon.com/forums/index.php?topic=37698.msg385779]Ludeon Post[/url][/b]
+
+[b][url=https://github.com/KiameV/rimworld-infinitestorage/releases/download/current/InfiniteStorage.zip]Direct Download[/url][/b]
+
+[b][url=https://github.com/KiameV/rimworld-infinitestorage/]Github[/url][/b]
+
+[b]Translators:[/b]
 Vaniat - Chinese
 Чей-то друг - Russian
-	</description>
+
+Like my mods? Consider supporting me!
+[url=https://ko-fi.com/kiamev][img]https://i.imgur.com/i08683D.png[/img][/url]
+	
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]</description>
 </ModMetaData>
