@@ -64,10 +64,10 @@ public class ViewUI : Window
     static ViewUI()
     {
         DropTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/drop");
-        BodyPartViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewbodyparts");
-        TextileViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewtextile");
-        InfiniteStorageViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewif");
-        TroughViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewtrough");
+        //BodyPartViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewbodyparts");
+        //TextileViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewtextile");
+        InfiniteStorageViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/view");
+        //TroughViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewtrough");
         emptyTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/empty");
         collectTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/collect");
         yesSellTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/yessell");

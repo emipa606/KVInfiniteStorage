@@ -113,7 +113,7 @@ public class Building_InfiniteStorage : Building_Storage
         gotten = null;
         foreach (var value2 in storedThings.Values)
         {
-            if (value2 == null || value2.Count <= 0)
+            if (value2 is not { Count: > 0 })
             {
                 continue;
             }
@@ -148,7 +148,7 @@ public class Building_InfiniteStorage : Building_Storage
         {
             storedCount = 0;
             Dispose();
-            Destroy(mode);
+            base.Destroy(mode);
         }
         catch (Exception ex)
         {
@@ -162,7 +162,7 @@ public class Building_InfiniteStorage : Building_Storage
         {
             storedCount = 0;
             Dispose();
-            DeSpawn(mode);
+            base.DeSpawn(mode);
         }
         catch (Exception ex)
         {
@@ -504,7 +504,7 @@ public class Building_InfiniteStorage : Building_Storage
             }
 
             var thingDef = item.First.Value.def;
-            if ((thingDef == null || !thingDef.IsMedicine) && (!includeBodyParts || !IsBodyPart(thingDef)))
+            if (thingDef is not { IsMedicine: true } && (!includeBodyParts || !IsBodyPart(thingDef)))
             {
                 continue;
             }
@@ -700,7 +700,7 @@ public class Building_InfiniteStorage : Building_Storage
             linkedListNode = next;
         }
 
-        if (removed == null || removed.Count <= 0 || num2 <= 0)
+        if (removed is not { Count: > 0 } || num2 <= 0)
         {
             return false;
         }
@@ -941,22 +941,6 @@ public class Building_InfiniteStorage : Building_Storage
 
     private Texture2D GetGizmoViewTexture()
     {
-        var modExtension = def.GetModExtension<InfiniteStorgeGizmoViewTexture>();
-        if (modExtension == null)
-        {
-            return ViewUI.InfiniteStorageViewTexture;
-        }
-
-        switch (modExtension.GizmoViewTexture)
-        {
-            case "viewbodyparts":
-                return ViewUI.BodyPartViewTexture;
-            case "viewtextile":
-                return ViewUI.TextileViewTexture;
-            case "viewtrough":
-                return ViewUI.TroughViewTexture;
-        }
-
         return ViewUI.InfiniteStorageViewTexture;
     }
 

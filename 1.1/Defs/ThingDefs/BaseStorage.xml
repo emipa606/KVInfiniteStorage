@@ -1,14 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ThingDef ParentName="FurnitureBase">
-    <defName>IS_MeatStorage</defName>
-    <label>meat storage</label>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <description>A place to store all types of fabrics, leathers, and wool.</description>
+  <ThingDef ParentName="FurnitureBase" Name="BaseMassiveStorage" Abstract="True">
     <thingClass>InfiniteStorage.Building_InfiniteStorage</thingClass>
     <graphicData>
-      <texPath>Furniture/MeatStorage</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
       <drawSize>(1,1)</drawSize>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
@@ -21,13 +17,6 @@
     <passability>PassThroughOnly</passability>
     <fillPercent>0.4</fillPercent>
     <castEdgeShadows>true</castEdgeShadows>
-    <stuffCategories>
-      <li>Metallic</li>
-      <li>Woody</li>
-      <li>Stony</li>
-    </stuffCategories>
-    <costStuffCount>50</costStuffCount>
-    <defaultPlacingRot>South</defaultPlacingRot>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Mass>10</Mass>
@@ -44,27 +33,12 @@
     </inspectorTabs>
     <building>
       <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
-      <fixedStorageSettings>
-        <filter>
-          <categories>
-            <li>MeatRaw</li>
-            <li>AnimalProductRaw</li>
-            <li>EggsFertilized</li>
-            <li>EggsUnfertilized</li>
-          </categories>
-        </filter>
-      </fixedStorageSettings>
-      <defaultStorageSettings>
-        <priority>Preferred</priority>
-        <filter>
-          <categories>
-            <li>MeatRaw</li>
-          </categories>
-        </filter>
-      </defaultStorageSettings>
     </building>
-    <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <researchPrerequisites>
+      <li>InfiniteStorage</li>
+      <li>MultiAnalyzer</li>
+    </researchPrerequisites>
+    <hasInteractionCell>False</hasInteractionCell>
     <designationCategory>Misc</designationCategory>
     <tickerType>Rare</tickerType>
   </ThingDef>

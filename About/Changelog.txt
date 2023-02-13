@@ -1,5 +1,8 @@
 # Changelog for KVInfiniteStorage
 
+1.4.2 - Fixed the crash when minimizing, updated the graphics to be more vanilla friendly, dropped 1.0 support
+
+
 1.4.1 - Updated to 1.4.
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 

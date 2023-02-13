@@ -5,7 +5,6 @@
   <author>Kiame Vivacity</author>
   <url>https://github.com/emipa606/KVInfiniteStorage</url>
   <supportedVersions>
-    <li>1.0</li>
     <li>1.1</li>
     <li>1.2</li>
     <li>1.3</li>
@@ -48,7 +47,7 @@ Infinite Storage is right for you!
 -Build Menu: Misc
 -Size: 1x1
 -Cost: 100 Metallic + 4 components
--Research: [u]Multi Analyzer[/u] &amp;amp; [u]Infinite Storage[/u]
+-Research: [u]Multi Analyzer[/u] and [u]Infinite Storage[/u]
 -Stores: Everything except food
 -Power: 1 W per stored kg  -  this can be adjusted in Options-Mod Settings-Infinite Storage
 
@@ -62,7 +61,7 @@ Infinite Storage is right for you!
 -Build Menu: Misc
 -Size: 1x1
 -Cost: 50 wood/stone/steel
--Stores: Body Parts &amp;amp; Medicines
+-Stores: Body Parts and Medicines
 
 [b]Silver Storage[/b]
 -Build Menu: Misc
@@ -76,14 +75,14 @@ Infinite Storage requires energy to compress and make available the stored items
 
 I have decided that Infinite Storage will not break down - in case all components are stored within as that would suck.
 
-There are two 'specialty' storage units: Body Parts and Textiles. These units are capable of storing Body Parts &amp;amp; Medicine and Leather/Wool without energy.
+There are two 'specialty' storage units: Body Parts and Textiles. These units are capable of storing Body Parts and Medicine and Leather/Wool without energy.
 
 Other Storage Type Mods:
 -[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1180720427 ]Weapon Storage[/url]
 -[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1385697110]Apparel Storage (Change Dresser)[/url]
 
 Supports:
--[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1180718516]Save Storage &amp;amp; Outfit Settings[/url]
+-[url=https://steamcommunity.com/sharedfiles/filedetails/?id=1180718516]Save Storage and Outfit Settings[/url]
 -[url=http://steamcommunity.com/sharedfiles/filedetails/?id=725956940]Expanded Prosthetics and Organ Engineering (EPOE)[/url]
 -[url=https://steamcommunity.com/sharedfiles/filedetails/?id=746425621]A Dog Said[/url]
 -[url=http://steamcommunity.com/sharedfiles/filedetails/?id=943925765]Fast regen[/url]
@@ -102,16 +101,9 @@ Unsupported:
 
 [b][url=https://ludeon.com/forums/index.php?topic=37698.msg385779]Ludeon Post[/url][/b]
 
-[b][url=https://github.com/KiameV/rimworld-infinitestorage/releases/download/current/InfiniteStorage.zip]Direct Download[/url][/b]
-
-[b][url=https://github.com/KiameV/rimworld-infinitestorage/]Github[/url][/b]
-
 [b]Translators:[/b]
 Vaniat - Chinese
 Чей-то друг - Russian
-
-Like my mods? Consider supporting me!
-[url=https://ko-fi.com/kiamev][img]https://i.imgur.com/i08683D.png[/img][/url]
 	
 [img]https://i.imgur.com/PwoNOj4.png[/img]
 [list]
@@ -121,5 +113,6 @@ Like my mods? Consider supporting me!
 [*] For best support, please use the Discord-channel for error-reporting.
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
-[/list]</description>
+[/list]
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2932669764]Last updated 2023-02-13[/url]</description>
 </ModMetaData>

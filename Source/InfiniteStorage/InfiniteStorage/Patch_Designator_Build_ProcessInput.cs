@@ -12,7 +12,7 @@ internal static class Patch_Designator_Build_ProcessInput
     private static bool Prefix(Designator_Build __instance, Event ev)
     {
         var currentMap = Find.CurrentMap;
-        if (__instance.entDef is not ThingDef thingDef || !thingDef.MadeFromStuff ||
+        if (__instance.entDef is not ThingDef { MadeFromStuff: true } thingDef ||
             !WorldComp.HasInfiniteStorages(currentMap))
         {
             return true;

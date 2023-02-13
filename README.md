@@ -18,7 +18,7 @@ Infinite Storage is right for you!
 -Build Menu: Misc
 -Size: 1x1
 -Cost: 100 Metallic + 4 components
--Research: [u]Multi Analyzer[/u] &amp; [u]Infinite Storage[/u]
+-Research: [u]Multi Analyzer[/u] and [u]Infinite Storage[/u]
 -Stores: Everything except food
 -Power: 1 W per stored kg  -  this can be adjusted in Options-Mod Settings-Infinite Storage
 
@@ -32,7 +32,7 @@ Infinite Storage is right for you!
 -Build Menu: Misc
 -Size: 1x1
 -Cost: 50 wood/stone/steel
--Stores: Body Parts &amp; Medicines
+-Stores: Body Parts and Medicines
 
 **Silver Storage**
 -Build Menu: Misc
@@ -46,14 +46,14 @@ Infinite Storage requires energy to compress and make available the stored items
 
 I have decided that Infinite Storage will not break down - in case all components are stored within as that would suck.
 
-There are two 'specialty' storage units: Body Parts and Textiles. These units are capable of storing Body Parts &amp; Medicine and Leather/Wool without energy.
+There are two 'specialty' storage units: Body Parts and Textiles. These units are capable of storing Body Parts and Medicine and Leather/Wool without energy.
 
 Other Storage Type Mods:
 -https://steamcommunity.com/sharedfiles/filedetails/?id=1180720427 ]Weapon Storage
 -https://steamcommunity.com/sharedfiles/filedetails/?id=1385697110]Apparel Storage (Change Dresser)
 
 Supports:
--https://steamcommunity.com/sharedfiles/filedetails/?id=1180718516]Save Storage &amp; Outfit Settings
+-https://steamcommunity.com/sharedfiles/filedetails/?id=1180718516]Save Storage and Outfit Settings
 -http://steamcommunity.com/sharedfiles/filedetails/?id=725956940]Expanded Prosthetics and Organ Engineering (EPOE)
 -https://steamcommunity.com/sharedfiles/filedetails/?id=746425621]A Dog Said
 -http://steamcommunity.com/sharedfiles/filedetails/?id=943925765]Fast regen
@@ -72,17 +72,9 @@ Unsupported:
 
 **https://ludeon.com/forums/index.php?topic=37698.msg385779]Ludeon Post**
 
-**https://github.com/KiameV/rimworld-infinitestorage/releases/download/current/InfiniteStorage.zip]Direct Download**
-
-**https://github.com/KiameV/rimworld-infinitestorage/]Github**
-
 **Translators:**
 Vaniat - Chinese
 Чей-то друг - Russian
-
-Like my mods? Consider supporting me!
-https://ko-fi.com/kiamev]![Image](https://i.imgur.com/i08683D.png)
-
 	
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
@@ -96,3 +88,4 @@ https://ko-fi.com/kiamev]![Image](https://i.imgur.com/i08683D.png)
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2932669764]Last updated 2023-02-13

@@ -1,13 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ThingDef ParentName="FurnitureBase">
-    <defName>IS_SilverStorage</defName>
-    <label>silver storage</label>
-    <description>A place to store all types of fabrics, leathers, and wool.</description>
+  <ThingDef ParentName="FurnitureBase" Name="BaseMassiveStorage" Abstract="True">
     <thingClass>InfiniteStorage.Building_InfiniteStorage</thingClass>
     <graphicData>
-      <texPath>Furniture/SilverStorage</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
       <drawSize>(1,1)</drawSize>
       <damageData>
         <cornerTL>Damage/Corner</cornerTL>
@@ -20,13 +17,6 @@
     <passability>PassThroughOnly</passability>
     <fillPercent>0.4</fillPercent>
     <castEdgeShadows>true</castEdgeShadows>
-    <stuffCategories>
-      <li>Metallic</li>
-      <li>Woody</li>
-      <li>Stony</li>
-    </stuffCategories>
-    <costStuffCount>50</costStuffCount>
-    <defaultPlacingRot>South</defaultPlacingRot>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Mass>10</Mass>
@@ -43,26 +33,12 @@
     </inspectorTabs>
     <building>
       <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
-      <fixedStorageSettings>
-        <filter>
-          <categories />
-          <thingDefs>
-            <li>Silver</li>
-          </thingDefs>
-        </filter>
-      </fixedStorageSettings>
-      <defaultStorageSettings>
-        <priority>Preferred</priority>
-        <filter>
-          <categories />
-          <thingDefs>
-            <li>Silver</li>
-          </thingDefs>
-        </filter>
-      </defaultStorageSettings>
     </building>
-    <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <researchPrerequisites>
+      <li>InfiniteStorage</li>
+      <li>MultiAnalyzer</li>
+    </researchPrerequisites>
+    <hasInteractionCell>False</hasInteractionCell>
     <designationCategory>Misc</designationCategory>
     <tickerType>Rare</tickerType>
   </ThingDef>
