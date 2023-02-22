@@ -9,6 +9,6 @@ internal static class Patch_Window_PreClose
     [HarmonyPriority(800)]
     private static void Postfix(bool doCloseSound)
     {
-        TradeUtil.ReclaimThings();
+        TradeUtil.ReclaimThings(true);
     }
 }

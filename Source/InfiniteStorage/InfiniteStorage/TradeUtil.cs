@@ -19,14 +19,22 @@ internal static class TradeUtil
         return list;
     }
 
-    public static void ReclaimThings()
+    public static void ReclaimThings(bool force = false)
     {
         foreach (var allInfiniteStorage in WorldComp.GetAllInfiniteStorages())
         {
-            if (allInfiniteStorage.Map != null && allInfiniteStorage.Spawned)
+            if (allInfiniteStorage.Map == null || !allInfiniteStorage.Spawned)
             {
-                allInfiniteStorage.Reclaim();
+                continue;
             }
+
+            if (force)
+            {
+                allInfiniteStorage.ForceReclaim();
+                continue;
+            }
+
+            allInfiniteStorage.Reclaim();
         }
     }
 }

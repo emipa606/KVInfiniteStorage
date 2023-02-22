@@ -1,5 +1,8 @@
 # Changelog for KVInfiniteStorage
 
+1.4.3 - Fixed items not returning to storage when trading
+
+
 1.4.2 - Fixed the crash when minimizing, updated the graphics to be more vanilla friendly, dropped 1.0 support
 
 

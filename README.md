@@ -5,6 +5,8 @@
 Update of Kiame Vivacitys mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1233893175
 
+- Updated the graphics to be more vanilla-friendly
+
 ![Image](https://i.imgur.com/pufA0kM.png)
 
 	
@@ -88,4 +90,4 @@ Vaniat - Chinese
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2932669764]Last updated 2023-02-13
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2932669764]Last updated 2023-02-22
