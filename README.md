@@ -90,4 +90,4 @@ Vaniat - Chinese
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2932669764]Last updated 2023-02-22
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2932669764]Last updated 2023-08-06

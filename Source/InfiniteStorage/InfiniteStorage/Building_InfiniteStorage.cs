@@ -10,6 +10,9 @@ namespace InfiniteStorage;
 
 public class Building_InfiniteStorage : Building_Storage
 {
+    internal readonly SortedDictionary<string, LinkedList<Thing>> storedThings =
+        new SortedDictionary<string, LinkedList<Thing>>();
+
     private CompPowerTrader compPowerTrader;
 
     private bool includeInTradeDeals = true;
@@ -18,20 +21,11 @@ public class Building_InfiniteStorage : Building_Storage
 
     [Unsaved] private int storedCount;
 
-    internal SortedDictionary<string, LinkedList<Thing>> storedThings =
-        new SortedDictionary<string, LinkedList<Thing>>();
-
     [Unsaved] private float storedWeight;
 
     public List<Thing> temp;
 
     private List<Thing> ToDumpOnSpawn;
-
-    public Building_InfiniteStorage()
-    {
-        AllowAdds = true;
-        CanAutoCollect = true;
-    }
 
     public IEnumerable<Thing> StoredThings
     {
@@ -61,7 +55,7 @@ public class Building_InfiniteStorage : Building_Storage
         }
     }
 
-    public bool AllowAdds { get; set; }
+    public bool AllowAdds { get; set; } = true;
 
     private Map CurrentMap { get; set; }
 
@@ -71,7 +65,7 @@ public class Building_InfiniteStorage : Building_Storage
 
     public bool IsOperational => compPowerTrader == null || compPowerTrader.PowerOn;
 
-    public bool CanAutoCollect { get; set; }
+    public bool CanAutoCollect { get; set; } = true;
 
     public bool IncludeInWorldLookup { get; private set; }
 
@@ -405,7 +399,7 @@ public class Building_InfiniteStorage : Building_Storage
         }
 
         var num = Settings.EnableEnergyBuffer ? Settings.DesiredEnergyBuffer : 10;
-        return !(compPowerTrader.PowerNet.CurrentEnergyGainRate() / CompPower.WattsToWattDaysPerTick <
+        return !(compPowerTrader?.PowerNet.CurrentEnergyGainRate() / CompPower.WattsToWattDaysPerTick <
                  num + GetThingWeight(thing, thing.stackCount));
     }
 
@@ -590,9 +584,9 @@ public class Building_InfiniteStorage : Building_Storage
         return obj.Count > 0;
     }
 
-    public bool TryGetValue(ThingDef def, out Thing t)
+    public bool TryGetValue(ThingDef thingDef, out Thing t)
     {
-        if (def != null && storedThings.TryGetValue(def.ToString(), out var value) && value.Count > 0)
+        if (thingDef != null && storedThings.TryGetValue(thingDef.ToString(), out var value) && value.Count > 0)
         {
             t = value.First.Value;
             return true;
@@ -631,11 +625,11 @@ public class Building_InfiniteStorage : Building_Storage
         return true;
     }
 
-    public bool TryRemove(ThingDef def, out IEnumerable<Thing> removed)
+    public bool TryRemove(ThingDef thingDef, out IEnumerable<Thing> removed)
     {
-        if (storedThings.TryGetValue(def.ToString(), out var value))
+        if (storedThings.TryGetValue(thingDef.ToString(), out var value))
         {
-            storedThings.Remove(def.ToString());
+            storedThings.Remove(thingDef.ToString());
             removed = value;
             foreach (var item in value)
             {
@@ -654,10 +648,10 @@ public class Building_InfiniteStorage : Building_Storage
         return TryRemove(thing.def, count, out removed);
     }
 
-    public bool TryRemove(ThingDef def, int count, out List<Thing> removed)
+    public bool TryRemove(ThingDef thingDef, int count, out List<Thing> removed)
     {
         removed = null;
-        if (!storedThings.TryGetValue(def.ToString(), out var value))
+        if (!storedThings.TryGetValue(thingDef.ToString(), out var value))
         {
             return false;
         }

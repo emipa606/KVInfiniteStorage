@@ -1,5 +1,8 @@
 # Changelog for KVInfiniteStorage
 
+1.4.4 - Some code cleanup, not sure if it fixes anything since I cant replicate the issue
+
+
 1.4.3 - Fixed items not returning to storage when trading
 
 

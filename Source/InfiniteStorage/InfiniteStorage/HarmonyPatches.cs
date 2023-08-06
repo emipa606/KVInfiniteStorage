@@ -170,7 +170,7 @@ internal class HarmonyPatches
         private static float lastItemWealth = -1f;
 
         [HarmonyPriority(0)]
-        private static void Postfix(WealthWatcher __instance, Map ___map, ref float ___wealthItems)
+        private static void Postfix(Map ___map, ref float ___wealthItems)
         {
             var num = TallyWealth(wealthItems: ___wealthItems, storages: WorldComp.GetInfiniteStorages(___map));
             if (lastItemWealth < 1f)
@@ -179,9 +179,7 @@ internal class HarmonyPatches
             }
             else if (num > lastItemWealth * 5f)
             {
-                var num2 = num;
-                num = lastItemWealth;
-                lastItemWealth = num2;
+                (num, lastItemWealth) = (lastItemWealth, num);
             }
             else
             {

@@ -33,16 +33,15 @@ internal class BuildingUtil
         return list;
     }
 
-    public static bool DropThing(Thing toDrop, int amountToDrop, Building_InfiniteStorage from, Map map,
+    public static void DropThing(Thing toDrop, int amountToDrop, Building_InfiniteStorage from, Map map,
         List<Thing> droppedThings = null)
     {
         if (toDrop.stackCount == 0)
         {
             Log.Warning($"To Drop Thing {toDrop.Label} had stack count of 0");
-            return false;
+            return;
         }
 
-        var result = false;
         try
         {
             from.AllowAdds = false;
@@ -79,10 +78,7 @@ internal class BuildingUtil
                 }
 
                 droppedThings?.Add(result2);
-                result = true;
             }
-
-            return result;
         }
         finally
         {

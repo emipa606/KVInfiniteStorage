@@ -7,7 +7,7 @@ namespace InfiniteStorage;
 internal static class Patch_Window_PreClose
 {
     [HarmonyPriority(800)]
-    private static void Postfix(bool doCloseSound)
+    private static void Postfix()
     {
         TradeUtil.ReclaimThings(true);
     }

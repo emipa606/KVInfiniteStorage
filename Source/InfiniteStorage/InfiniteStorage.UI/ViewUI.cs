@@ -19,21 +19,21 @@ public class ViewUI : Window
 
     public static Texture2D TextileViewTexture;
 
-    public static Texture2D InfiniteStorageViewTexture;
+    public static readonly Texture2D InfiniteStorageViewTexture;
 
     public static Texture2D TroughViewTexture;
 
-    public static Texture2D DropTexture;
+    public static readonly Texture2D DropTexture;
 
-    public static Texture2D emptyTexture;
+    public static readonly Texture2D emptyTexture;
 
-    public static Texture2D collectTexture;
+    public static readonly Texture2D collectTexture;
 
-    public static Texture2D yesSellTexture;
+    public static readonly Texture2D yesSellTexture;
 
-    public static Texture2D noSellTexture;
+    public static readonly Texture2D noSellTexture;
 
-    public static Texture2D applyFiltersTexture;
+    public static readonly Texture2D applyFiltersTexture;
 
     private static ThingCategoryDef WeaponsMeleeCategoryDef;
 
@@ -149,28 +149,30 @@ public class ViewUI : Window
             selectedTab = Tabs.Unknown;
         }
 
-        if (selectedTab == Tabs.Unknown)
+        if (selectedTab != Tabs.Unknown)
         {
-            if (Misc.Count > 0)
-            {
-                selectedTab = Tabs.InfiniteStorage_Misc;
-            }
-            else if (Minified.Count > 0)
-            {
-                selectedTab = Tabs.InfiniteStorage_Minified;
-            }
-            else if (Apparel.Count > 0)
-            {
-                selectedTab = Tabs.InfiniteStorage_Apparel;
-            }
-            else if (Weapons.Count > 0)
-            {
-                selectedTab = Tabs.InfiniteStorage_Weapons;
-            }
-            else if (Chunks.Count > 0)
-            {
-                selectedTab = Tabs.InfiniteStorage_Chunks;
-            }
+            return;
+        }
+
+        if (Misc.Count > 0)
+        {
+            selectedTab = Tabs.InfiniteStorage_Misc;
+        }
+        else if (Minified.Count > 0)
+        {
+            selectedTab = Tabs.InfiniteStorage_Minified;
+        }
+        else if (Apparel.Count > 0)
+        {
+            selectedTab = Tabs.InfiniteStorage_Apparel;
+        }
+        else if (Weapons.Count > 0)
+        {
+            selectedTab = Tabs.InfiniteStorage_Weapons;
+        }
+        else if (Chunks.Count > 0)
+        {
+            selectedTab = Tabs.InfiniteStorage_Chunks;
         }
     }
 
@@ -227,8 +229,7 @@ public class ViewUI : Window
         try
         {
             var num = 90;
-            int rows;
-            var thingsToShow = GetThingsToShow(out rows);
+            var thingsToShow = GetThingsToShow(out var rows);
             if (rows == 0)
             {
                 return;
@@ -421,7 +422,7 @@ public class ViewUI : Window
 
     private class MatchedThings : Thing
     {
-        public readonly List<Thing> Things = new List<Thing>();
+        private readonly List<Thing> Things = new List<Thing>();
         public int Count;
 
         public MatchedThings()

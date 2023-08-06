@@ -25,8 +25,8 @@ internal static class JobDriver_ManTurret_FindAmmoForTurret
 
             foreach (var item in removed)
             {
-                BuildingUtil.DropThing(droppedThings: new List<Thing>(), toDrop: item, amountToDrop: item.stackCount,
-                    from: infiniteStorage, map: infiniteStorage.Map);
+                BuildingUtil.DropThing(item, item.stackCount,
+                    infiniteStorage, infiniteStorage.Map, new List<Thing>());
             }
         }
     }
