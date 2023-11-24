@@ -35,8 +35,7 @@
       <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
     </building>
     <researchPrerequisites>
-      <li>InfiniteStorage</li>
-      <li>MultiAnalyzer</li>
+      <li>ComplexFurniture</li>
     </researchPrerequisites>
     <hasInteractionCell>False</hasInteractionCell>
     <designationCategory>Misc</designationCategory>

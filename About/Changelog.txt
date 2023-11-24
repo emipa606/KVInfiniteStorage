@@ -1,5 +1,8 @@
 # Changelog for KVInfiniteStorage
 
+1.4.5 - Made the more basic storages buildable after complex furniture research
+
+
 1.4.4 - Some code cleanup, not sure if it fixes anything since I cant replicate the issue
 
 
