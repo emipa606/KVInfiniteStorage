@@ -1,5 +1,10 @@
 # Changelog for KVInfiniteStorage
 
+1.4.6 - Added block-storage, thanks to MrXarous
+Fixed compatibility with ReclaimReuseRecycle, thanks to MrXarous
+All storages should have the right gizmos now
+
+
 1.4.5 - Made the more basic storages buildable after complex furniture research
 
 

@@ -19,6 +19,7 @@
           <categories>
             <li>Medicine</li>
             <li>BodyParts</li>
+            <li MayRequire="Mlie.ReclaimReuseRecycle">BodyPartsReclaimed</li>
           </categories>
           <thingDefs />
         </filter>
@@ -29,14 +30,12 @@
           <categories>
             <li>Medicine</li>
             <li>BodyParts</li>
+            <li MayRequire="Mlie.ReclaimReuseRecycle">BodyPartsReclaimed</li>
           </categories>
         </filter>
       </defaultStorageSettings>
     </building>
     <modExtensions>
-      <li Class="InfiniteStorage.InfiniteStorageType">
-        <IncludeInWorldLookup>true</IncludeInWorldLookup>
-      </li>
       <li Class="InfiniteStorage.InfiniteStorgeGizmoViewTexture">
         <GizmoViewTexture>viewbodyparts</GizmoViewTexture>
       </li>

@@ -40,5 +40,10 @@
     <hasInteractionCell>False</hasInteractionCell>
     <designationCategory>Misc</designationCategory>
     <tickerType>Rare</tickerType>
+    <modExtensions>
+      <li Class="InfiniteStorage.InfiniteStorageType">
+        <IncludeInWorldLookup>true</IncludeInWorldLookup>
+      </li>
+    </modExtensions>
   </ThingDef>
 </Defs>

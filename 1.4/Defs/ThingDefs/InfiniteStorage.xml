@@ -64,9 +64,6 @@
       <li>MultiAnalyzer</li>
     </researchPrerequisites>
     <modExtensions>
-      <li Class="InfiniteStorage.InfiniteStorageType">
-        <IncludeInWorldLookup>true</IncludeInWorldLookup>
-      </li>
       <li Class="InfiniteStorage.InfiniteStorgeGizmoViewTexture">
         <GizmoViewTexture>infinitestorageview</GizmoViewTexture>
       </li>

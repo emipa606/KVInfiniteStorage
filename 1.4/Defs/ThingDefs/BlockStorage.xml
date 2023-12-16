@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <ThingDef ParentName="BaseMassiveStorage">
-    <defName>IS_TextileStorage</defName>
-    <label>textile storage</label>
-    <description>A place to store all types of fabrics, leathers, and wool.</description>
+    <defName>IS_BlockStorage</defName>
+    <label>block storage</label>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <description>A place to store all types of blocks.</description>
     <graphicData>
-      <texPath>Furniture/TextileStorage</texPath>
+      <texPath>Furniture/BlockStorage</texPath>
     </graphicData>
     <stuffCategories>
       <li>Metallic</li>
@@ -17,24 +18,18 @@
       <fixedStorageSettings>
         <filter>
           <categories>
-            <li>Textiles</li>
+            <li>StoneBlocks</li>
           </categories>
-          <thingDefs />
         </filter>
       </fixedStorageSettings>
       <defaultStorageSettings>
         <priority>Preferred</priority>
         <filter>
           <categories>
-            <li>Textiles</li>
+            <li>StoneBlocks</li>
           </categories>
         </filter>
       </defaultStorageSettings>
     </building>
-    <modExtensions>
-      <li Class="InfiniteStorage.InfiniteStorgeGizmoViewTexture">
-        <GizmoViewTexture>viewtextile</GizmoViewTexture>
-      </li>
-    </modExtensions>
   </ThingDef>
 </Defs>
