@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BaseMassiveStorage">
+    <defName>IS_BodyPartStorage</defName>
+    <label>body part storage</label>
+    <description>A place to store cut-off/created body parts.</description>
+    <graphicData>
+      <texPath>Furniture/BodyPartStorage</texPath>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+            <li>BodyParts</li>
+            <li MayRequire="Mlie.ReclaimReuseRecycle">BodyPartsReclaimed</li>
+          </categories>
+          <thingDefs />
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Preferred</priority>
+        <filter>
+          <categories>
+            <li>Medicine</li>
+            <li>BodyParts</li>
+            <li MayRequire="Mlie.ReclaimReuseRecycle">BodyPartsReclaimed</li>
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <modExtensions>
+      <li Class="InfiniteStorage.InfiniteStorgeGizmoViewTexture">
+        <GizmoViewTexture>viewbodyparts</GizmoViewTexture>
+      </li>
+    </modExtensions>
+  </ThingDef>
+</Defs>

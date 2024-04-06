@@ -6,6 +6,7 @@ Update of Kiame Vivacitys mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1233893175
 
 - Updated the graphics to be more vanilla-friendly
+- Added block-storage, thanks to MrXarous
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BaseMassiveStorage">
+    <defName>InfiniteStorage</defName>
+    <label>infinite storage</label>
+    <description>A place to store all types of things.</description>
+    <graphicData>
+      <texPath>Furniture/InfiniteStorage</texPath>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>20</costStuffCount>
+    <costList>
+      <ComponentSpacer>4</ComponentSpacer>
+      <Steel>80</Steel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>0</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+        <alwaysDisplayAsUsingPower>true</alwaysDisplayAsUsingPower>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <specialFiltersToDisallow>
+            <li>AllowRotten</li>
+          </specialFiltersToDisallow>
+          <categories>
+            <li>FoodRaw</li>
+            <li>Manufactured</li>
+            <li>ResourcesRaw</li>
+            <li>Items</li>
+            <li>Weapons</li>
+            <li>Apparel</li>
+            <li>Chunks</li>
+          </categories>
+          <thingDefs />
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Preferred</priority>
+        <filter>
+          <specialFiltersToDisallow>
+            <li>AllowRotten</li>
+          </specialFiltersToDisallow>
+          <categories>
+            <li>Manufactured</li>
+            <li>ResourcesRaw</li>
+            <li>Items</li>
+            <li>Weapons</li>
+            <li>Apparel</li>
+            <li>Chunks</li>
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <researchPrerequisites>
+      <li>InfiniteStorage</li>
+      <li>MultiAnalyzer</li>
+    </researchPrerequisites>
+    <modExtensions>
+      <li Class="InfiniteStorage.InfiniteStorgeGizmoViewTexture">
+        <GizmoViewTexture>infinitestorageview</GizmoViewTexture>
+      </li>
+    </modExtensions>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BaseMassiveStorage">
+    <defName>IS_SilverStorage</defName>
+    <label>silver storage</label>
+    <description>A place to store silver.</description>
+    <graphicData>
+      <texPath>Furniture/SilverStorage</texPath>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <categories />
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Preferred</priority>
+        <filter>
+          <categories />
+          <thingDefs>
+            <li>Silver</li>
+          </thingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+  </ThingDef>
+</Defs>

@@ -460,7 +460,7 @@ public class Building_InfiniteStorage : Building_Storage
         }
         else
         {
-            value = new LinkedList<Thing>();
+            value = [];
             value.AddFirst(thing);
             storedThings.Add(thing.def.ToString(), value);
         }
@@ -538,7 +538,7 @@ public class Building_InfiniteStorage : Building_Storage
 
                 if (gotten == null)
                 {
-                    gotten = new List<Thing>();
+                    gotten = [];
                 }
 
                 gotten.Add(item);
@@ -568,7 +568,7 @@ public class Building_InfiniteStorage : Building_Storage
                 DropThing(item, null);
                 if (dropped == null)
                 {
-                    dropped = new List<Thing>();
+                    dropped = [];
                 }
 
                 dropped.Add(item);
@@ -665,7 +665,7 @@ public class Building_InfiniteStorage : Building_Storage
             var next = linkedListNode.Next;
             if (removed == null)
             {
-                removed = new List<Thing>();
+                removed = [];
             }
 
             if (value2.stackCount == 0 || value2.Destroyed)
@@ -757,7 +757,7 @@ public class Building_InfiniteStorage : Building_Storage
         base.ExposeData();
         if (Scribe.mode == LoadSaveMode.Saving)
         {
-            temp = new List<Thing>();
+            temp = [];
             foreach (var value in storedThings.Values)
             {
                 foreach (var item in value)
@@ -786,7 +786,7 @@ public class Building_InfiniteStorage : Building_Storage
 
                 if (ToDumpOnSpawn == null)
                 {
-                    ToDumpOnSpawn = new List<Thing>();
+                    ToDumpOnSpawn = [];
                 }
 
                 ToDumpOnSpawn.Add(item2);
@@ -854,7 +854,7 @@ public class Building_InfiniteStorage : Building_Storage
     public override IEnumerable<Gizmo> GetGizmos()
     {
         var gizmos = base.GetGizmos();
-        var list = gizmos == null ? new List<Gizmo>(1) : new List<Gizmo>(gizmos);
+        var list = gizmos == null ? new List<Gizmo>(1) : [..gizmos];
         var hashCode = "InfiniteStorage".GetHashCode();
         list.Add(new Command_Action
         {

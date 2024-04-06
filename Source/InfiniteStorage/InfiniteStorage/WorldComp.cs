@@ -48,7 +48,7 @@ public class WorldComp : WorldComponent
     {
         if (!storages.TryGetValue(map, out var value))
         {
-            value = new LinkedList<Building_InfiniteStorage>();
+            value = [];
             storages.Add(map, value);
         }
 

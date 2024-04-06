@@ -48,11 +48,12 @@ public class Settings : ModSettings
     {
         base.ExposeData();
         Scribe_Values.Look(ref enableEnergyBuffer, "InfiniteStorage.EnableEnergyBuffer", true, true);
-        Scribe_Values.Look(ref desiredEnergyBuffer, "InfiniteStorage.DesiredEnergyBuffer", 100, true);
-        Scribe_Values.Look(ref energyFactor, "InfiniteStorage.EnergyFactor", 1f, true);
+        Scribe_Values.Look(ref desiredEnergyBuffer, "InfiniteStorage.DesiredEnergyBuffer", DEFAULT_ENERGY_BUFFER, true);
+        Scribe_Values.Look(ref energyFactor, "InfiniteStorage.EnergyFactor", DEFAULT_ENERGY_FACTOR, true);
         Scribe_Values.Look(ref emptyOnPowerLoss, "InfiniteStorage.EmptyOnPowerLoss", false, true);
         Scribe_Values.Look(ref collectThingsAutomatically, "InfiniteStorage.CollectThingsAutomatically", true, true);
-        Scribe_Values.Look(ref timeBetweenAutoCollects, "InfiniteStorage.TimeBetweenAutoCollects", 100000000L, true);
+        Scribe_Values.Look(ref timeBetweenAutoCollects, "InfiniteStorage.TimeBetweenAutoCollects",
+            DEFAULT_TIME_BETWEEN_COLLECTS_TICKS, true);
         if (Scribe.mode == LoadSaveMode.Saving)
         {
             return;
@@ -91,7 +92,7 @@ public class Settings : ModSettings
 
             if (Widgets.ButtonText(new Rect(175f, num, 100f, 32f), "default".Translate().CapitalizeFirst()))
             {
-                desiredEnergyBuffer = 100;
+                desiredEnergyBuffer = DEFAULT_ENERGY_BUFFER;
                 desiredEnergyBufferUserInput = desiredEnergyBuffer.ToString();
                 Messages.Message(
                     "InfiniteStorage.EnergyBufferSet".Translate().Replace("{v}", desiredEnergyBuffer.ToString()),
@@ -166,7 +167,7 @@ public class Settings : ModSettings
 
         if (Widgets.ButtonText(new Rect(175f, num, 100f, 32f), "default".Translate().CapitalizeFirst()))
         {
-            timeBetweenAutoCollects = 100000000L;
+            timeBetweenAutoCollects = DEFAULT_TIME_BETWEEN_COLLECTS_TICKS;
             timeBetweenAutoCollectsUserInput = TimeBetweenAutoCollectsSeconds.ToString();
             Messages.Message(
                 "InfiniteStorage.TimeBetweenAutoCollectsSet".Translate()
