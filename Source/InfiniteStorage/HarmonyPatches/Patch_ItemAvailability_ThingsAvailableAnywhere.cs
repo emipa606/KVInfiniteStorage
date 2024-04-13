@@ -7,7 +7,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(ItemAvailability), nameof(ItemAvailability.ThingsAvailableAnywhere))]
 internal static class Patch_ItemAvailability_ThingsAvailableAnywhere
 {
-    private static void Postfix(ref bool __result, ItemAvailability __instance, ThingCountClass need, Pawn pawn)
+    private static void Postfix(ref bool __result, ItemAvailability __instance, ThingDef need, int amount, Pawn pawn)
     {
         if (__result || pawn == null || pawn.Faction != Faction.OfPlayer)
         {
@@ -16,13 +16,13 @@ internal static class Patch_ItemAvailability_ThingsAvailableAnywhere
 
         foreach (var infiniteStorage in WorldComp.GetInfiniteStorages(pawn.Map))
         {
-            if (!infiniteStorage.IsOperational || !infiniteStorage.Spawned || need == null || need.thing == null ||
-                !infiniteStorage.TryGetValue(need.thing.def, out var t) || t.stackCount < need.Count)
+            if (!infiniteStorage.IsOperational || !infiniteStorage.Spawned || need == null ||
+                !infiniteStorage.TryGetValue(need, out var t) || t.stackCount < amount)
             {
                 continue;
             }
 
-            var count = need.Count < t.def.stackLimit ? t.def.stackLimit : need.Count;
+            var count = amount < t.def.stackLimit ? t.def.stackLimit : amount;
             if (!infiniteStorage.TryRemove(t, count, out var removed))
             {
                 break;
