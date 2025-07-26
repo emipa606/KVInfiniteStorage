@@ -1,0 +1,42 @@
+ManifestFileVersion: 0
+CRC: 1200455286
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4ee540ed5475b33923d81b9c3e566976
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 4ee540ed5475b33923d81b9c3e566976
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/InfiniteStorage.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/SilverStorage_m.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/BlockStorage.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/SilverStorage.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/BodyPartStorage_m.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/MeatStorage_m.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/BlockStorage_m.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/empty.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/nosell.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/collect.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/viewtrough.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/drop.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/MeatStorage.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/filter.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/viewtextile.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/viewif.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/viewbodyparts.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/InfiniteStorage_m.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/TextileStorage_m.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/TextileStorage.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/Furniture/BodyPartStorage.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/view.png
+- Assets/Data/Mlie.KVInfiniteStorage/Textures/InfiniteStorage/yessell.png
+Dependencies: []

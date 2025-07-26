@@ -124,7 +124,7 @@ internal class BuildingUtil
             }
 
             amountToDrop -= num;
-            if (!DropSingleThing(toDrop.SplitOff(num), from, map, out var result2))
+            if (!dropSingleThing(toDrop.SplitOff(num), from, map, out var result2))
             {
                 continue;
             }
@@ -148,7 +148,7 @@ internal class BuildingUtil
         try
         {
             from.AllowAdds = false;
-            return DropSingleThing(toDrop, from.InteractionCell, map, out result);
+            return dropSingleThing(toDrop, from.InteractionCell, map, out result);
         }
         finally
         {
@@ -156,7 +156,7 @@ internal class BuildingUtil
         }
     }
 
-    public static bool DropSingleThing(Thing toDrop, IntVec3 from, Map map, out Thing result)
+    private static bool dropSingleThing(Thing toDrop, IntVec3 from, Map map, out Thing result)
     {
         result = null;
         if (toDrop.stackCount == 0)

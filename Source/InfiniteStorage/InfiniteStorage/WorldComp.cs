@@ -6,11 +6,9 @@ namespace InfiniteStorage;
 
 public class WorldComp : WorldComponent
 {
-    [Unsaved] private static readonly Dictionary<Map, LinkedList<Building_InfiniteStorage>> ifStorages =
-        new Dictionary<Map, LinkedList<Building_InfiniteStorage>>();
+    [Unsaved] private static readonly Dictionary<Map, LinkedList<Building_InfiniteStorage>> ifStorages = new();
 
-    [Unsaved] private static readonly Dictionary<Map, LinkedList<Building_InfiniteStorage>> ifNonGlobalStorages =
-        new Dictionary<Map, LinkedList<Building_InfiniteStorage>>();
+    [Unsaved] private static readonly Dictionary<Map, LinkedList<Building_InfiniteStorage>> ifNonGlobalStorages = new();
 
     public WorldComp(World world)
         : base(world)
@@ -35,15 +33,15 @@ public class WorldComp : WorldComponent
         }
         else if (!storage.IncludeInWorldLookup)
         {
-            Add(map, storage, ifNonGlobalStorages);
+            add(map, storage, ifNonGlobalStorages);
         }
         else
         {
-            Add(map, storage, ifStorages);
+            add(map, storage, ifStorages);
         }
     }
 
-    private static void Add(Map map, Building_InfiniteStorage storage,
+    private static void add(Map map, Building_InfiniteStorage storage,
         Dictionary<Map, LinkedList<Building_InfiniteStorage>> storages)
     {
         if (!storages.TryGetValue(map, out var value))
@@ -159,10 +157,10 @@ public class WorldComp : WorldComponent
 
     public static void Remove(Map map, Building_InfiniteStorage storage)
     {
-        Remove(map, storage, !storage.IncludeInWorldLookup ? ifNonGlobalStorages : ifStorages);
+        remove(map, storage, !storage.IncludeInWorldLookup ? ifNonGlobalStorages : ifStorages);
     }
 
-    private static void Remove(Map map, Building_InfiniteStorage storage,
+    private static void remove(Map map, Building_InfiniteStorage storage,
         Dictionary<Map, LinkedList<Building_InfiniteStorage>> storages)
     {
         if (map == null || !storages.TryGetValue(map, out var value))

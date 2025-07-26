@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: textile storage -->
+  <IS_TextileStorage.label>textile storage</IS_TextileStorage.label>
+  <!-- EN: A place to store all types of fabrics, leathers, and wool. -->
+  <IS_TextileStorage.description>A place to store all types of fabrics, leathers, and wool.</IS_TextileStorage.description>
+</LanguageData>

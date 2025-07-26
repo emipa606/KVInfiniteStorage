@@ -6,11 +6,11 @@ namespace InfiniteStorage;
 
 public class Settings : ModSettings
 {
-    private const int DEFAULT_ENERGY_BUFFER = 100;
+    private const int DefaultEnergyBuffer = 100;
 
-    private const float DEFAULT_ENERGY_FACTOR = 1f;
+    private const float DefaultEnergyFactor = 1f;
 
-    private const long DEFAULT_TIME_BETWEEN_COLLECTS_TICKS = 100000000L;
+    private const long DefaultTimeBetweenCollectsTicks = 100000000L;
 
     private static bool enableEnergyBuffer = true;
 
@@ -48,12 +48,12 @@ public class Settings : ModSettings
     {
         base.ExposeData();
         Scribe_Values.Look(ref enableEnergyBuffer, "InfiniteStorage.EnableEnergyBuffer", true, true);
-        Scribe_Values.Look(ref desiredEnergyBuffer, "InfiniteStorage.DesiredEnergyBuffer", DEFAULT_ENERGY_BUFFER, true);
-        Scribe_Values.Look(ref energyFactor, "InfiniteStorage.EnergyFactor", DEFAULT_ENERGY_FACTOR, true);
+        Scribe_Values.Look(ref desiredEnergyBuffer, "InfiniteStorage.DesiredEnergyBuffer", DefaultEnergyBuffer, true);
+        Scribe_Values.Look(ref energyFactor, "InfiniteStorage.EnergyFactor", DefaultEnergyFactor, true);
         Scribe_Values.Look(ref emptyOnPowerLoss, "InfiniteStorage.EmptyOnPowerLoss", false, true);
         Scribe_Values.Look(ref collectThingsAutomatically, "InfiniteStorage.CollectThingsAutomatically", true, true);
         Scribe_Values.Look(ref timeBetweenAutoCollects, "InfiniteStorage.TimeBetweenAutoCollects",
-            DEFAULT_TIME_BETWEEN_COLLECTS_TICKS, true);
+            DefaultTimeBetweenCollectsTicks, true);
         if (Scribe.mode == LoadSaveMode.Saving)
         {
             return;
@@ -92,7 +92,7 @@ public class Settings : ModSettings
 
             if (Widgets.ButtonText(new Rect(175f, num, 100f, 32f), "default".Translate().CapitalizeFirst()))
             {
-                desiredEnergyBuffer = DEFAULT_ENERGY_BUFFER;
+                desiredEnergyBuffer = DefaultEnergyBuffer;
                 desiredEnergyBufferUserInput = desiredEnergyBuffer.ToString();
                 Messages.Message(
                     "InfiniteStorage.EnergyBufferSet".Translate().Replace("{v}", desiredEnergyBuffer.ToString()),
@@ -167,14 +167,14 @@ public class Settings : ModSettings
 
         if (Widgets.ButtonText(new Rect(175f, num, 100f, 32f), "default".Translate().CapitalizeFirst()))
         {
-            timeBetweenAutoCollects = DEFAULT_TIME_BETWEEN_COLLECTS_TICKS;
+            timeBetweenAutoCollects = DefaultTimeBetweenCollectsTicks;
             timeBetweenAutoCollectsUserInput = TimeBetweenAutoCollectsSeconds.ToString();
             Messages.Message(
                 "InfiniteStorage.TimeBetweenAutoCollectsSet".Translate()
                     .Replace("{v}", TimeBetweenAutoCollectsSeconds.ToString()), MessageTypeDefOf.PositiveEvent);
         }
 
-        if (SettingsController.currentVersion == null)
+        if (SettingsController.CurrentVersion == null)
         {
             return;
         }
@@ -182,7 +182,7 @@ public class Settings : ModSettings
         num += 40;
         GUI.contentColor = Color.gray;
         Widgets.Label(new Rect(25f, num, 300f, 32f),
-            "InfiniteStorage.CurrentModVersion".Translate(SettingsController.currentVersion));
+            "InfiniteStorage.CurrentModVersion".Translate(SettingsController.CurrentVersion));
         GUI.contentColor = Color.white;
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: body part storage -->
+  <IS_BodyPartStorage.label>body part storage</IS_BodyPartStorage.label>
+  <!-- EN: A place to store cut-off/created body parts. -->
+  <IS_BodyPartStorage.description>A place to store cut-off/created body parts.</IS_BodyPartStorage.description>
+</LanguageData>

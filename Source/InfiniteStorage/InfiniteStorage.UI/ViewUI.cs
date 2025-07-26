@@ -23,7 +23,7 @@ public class ViewUI : Window
 
     public static Texture2D TroughViewTexture;
 
-    public static readonly Texture2D DropTexture;
+    private static readonly Texture2D DropTexture;
 
     public static readonly Texture2D emptyTexture;
 
@@ -39,23 +39,23 @@ public class ViewUI : Window
 
     private static ThingCategoryDef WeaponsRangedCategoryDef;
 
-    private readonly List<Thing> Apparel = new List<Thing>();
+    private readonly List<Thing> Apparel = [];
 
-    private readonly Dictionary<string, Thing> Chunks = new Dictionary<string, Thing>();
+    private readonly Dictionary<string, Thing> Chunks = new();
 
     private readonly Building_InfiniteStorage InfiniteStorage;
 
-    private readonly List<Thing> Minified = new List<Thing>();
+    private readonly List<Thing> Minified = [];
 
-    private readonly Dictionary<string, Thing> Misc = new Dictionary<string, Thing>();
+    private readonly Dictionary<string, Thing> Misc = new();
 
-    private readonly List<TabRecord> tabs = new List<TabRecord>();
+    private readonly List<TabRecord> tabs = [];
 
-    private readonly List<Thing> Weapons = new List<Thing>();
+    private readonly List<Thing> Weapons = [];
 
     private bool itemsDropped;
 
-    private Vector2 scrollPosition = new Vector2(0f, 0f);
+    private Vector2 scrollPosition = new(0f, 0f);
 
     private string searchText = "";
 
@@ -86,7 +86,7 @@ public class ViewUI : Window
         PopulateDisplayThings();
     }
 
-    public override Vector2 InitialSize => new Vector2(550f, 650f);
+    public override Vector2 InitialSize => new(550f, 650f);
 
     private void PopulateDisplayThings()
     {
@@ -130,13 +130,13 @@ public class ViewUI : Window
             {
                 Minified.Add(storedThing);
             }
-            else if (IsChunk(storedThing.def))
+            else if (isChunk(storedThing.def))
             {
-                AddSpecial(storedThing, Chunks);
+                addSpecial(storedThing, Chunks);
             }
             else
             {
-                AddSpecial(storedThing, Misc);
+                addSpecial(storedThing, Misc);
             }
         }
 
@@ -176,7 +176,7 @@ public class ViewUI : Window
         }
     }
 
-    private void AddSpecial(Thing t, Dictionary<string, Thing> d)
+    private static void addSpecial(Thing t, Dictionary<string, Thing> d)
     {
         if (t.def.stackLimit == 1)
         {
@@ -195,7 +195,7 @@ public class ViewUI : Window
         }
     }
 
-    private bool IsChunk(ThingDef def)
+    private static bool isChunk(ThingDef def)
     {
         foreach (var thingCategory in def.thingCategories)
         {
@@ -229,7 +229,7 @@ public class ViewUI : Window
         try
         {
             var num = 90;
-            var thingsToShow = GetThingsToShow(out var rows);
+            var thingsToShow = getThingsToShow(out var rows);
             if (rows == 0)
             {
                 return;
@@ -255,13 +255,13 @@ public class ViewUI : Window
                     continue;
                 }
 
-                var text = FormatLabel(item);
+                var text = formatLabel(item);
                 if (searchText.Length != 0 && !text.ToLower().Contains(searchText))
                 {
                     continue;
                 }
 
-                if (DrawRow(item, text, num, num2, rect))
+                if (drawRow(item, text, num, num2, rect))
                 {
                     break;
                 }
@@ -285,7 +285,7 @@ public class ViewUI : Window
         }
     }
 
-    private bool DrawRow(Thing thing, string label, float y, int i, Rect r)
+    private bool drawRow(Thing thing, string label, float y, int i, Rect r)
     {
         var thing2 = thing is MatchedThings things ? things.First : thing;
         GUI.BeginGroup(new Rect(0f, y + (i * 32), r.width, 30f));
@@ -313,7 +313,7 @@ public class ViewUI : Window
         return false;
     }
 
-    private string FormatLabel(Thing thing)
+    private static string formatLabel(Thing thing)
     {
         var thing2 = thing is MatchedThings matchedThings ? matchedThings.First : thing;
         if (thing2 is MinifiedThing || thing2.def.IsApparel ||
@@ -345,7 +345,7 @@ public class ViewUI : Window
         return stringBuilder.ToString();
     }
 
-    private IEnumerable<Thing> GetThingsToShow(out int rows)
+    private IEnumerable<Thing> getThingsToShow(out int rows)
     {
         IEnumerable<Thing> result;
         if (searchText.Length > 0)
@@ -358,62 +358,60 @@ public class ViewUI : Window
             tabs.Clear();
             if (Misc.Count > 0)
             {
-                tabs.Add(new TabRecord(Tabs.InfiniteStorage_Misc.ToString().Translate(),
+                tabs.Add(new TabRecord(nameof(Tabs.InfiniteStorage_Misc).Translate(),
                     delegate { selectedTab = Tabs.InfiniteStorage_Misc; }, selectedTab == Tabs.InfiniteStorage_Misc));
             }
 
             if (Minified.Count > 0)
             {
-                tabs.Add(new TabRecord(Tabs.InfiniteStorage_Minified.ToString().Translate(),
+                tabs.Add(new TabRecord(nameof(Tabs.InfiniteStorage_Minified).Translate(),
                     delegate { selectedTab = Tabs.InfiniteStorage_Minified; },
                     selectedTab == Tabs.InfiniteStorage_Minified));
             }
 
             if (Apparel.Count > 0)
             {
-                tabs.Add(new TabRecord(Tabs.InfiniteStorage_Apparel.ToString().Translate(),
+                tabs.Add(new TabRecord(nameof(Tabs.InfiniteStorage_Apparel).Translate(),
                     delegate { selectedTab = Tabs.InfiniteStorage_Apparel; },
                     selectedTab == Tabs.InfiniteStorage_Apparel));
             }
 
             if (Weapons.Count > 0)
             {
-                tabs.Add(new TabRecord(Tabs.InfiniteStorage_Weapons.ToString().Translate(),
+                tabs.Add(new TabRecord(nameof(Tabs.InfiniteStorage_Weapons).Translate(),
                     delegate { selectedTab = Tabs.InfiniteStorage_Weapons; },
                     selectedTab == Tabs.InfiniteStorage_Weapons));
             }
 
             if (Chunks.Count > 0)
             {
-                tabs.Add(new TabRecord(Tabs.InfiniteStorage_Chunks.ToString().Translate(),
+                tabs.Add(new TabRecord(nameof(Tabs.InfiniteStorage_Chunks).Translate(),
                     delegate { selectedTab = Tabs.InfiniteStorage_Chunks; },
                     selectedTab == Tabs.InfiniteStorage_Chunks));
             }
 
-            if (selectedTab == Tabs.InfiniteStorage_Misc)
+            switch (selectedTab)
             {
-                result = Misc.Values;
-                rows = Misc.Count;
-            }
-            else if (selectedTab == Tabs.InfiniteStorage_Minified)
-            {
-                result = Minified;
-                rows = Minified.Count;
-            }
-            else if (selectedTab == Tabs.InfiniteStorage_Apparel)
-            {
-                result = Apparel;
-                rows = Apparel.Count;
-            }
-            else if (selectedTab == Tabs.InfiniteStorage_Weapons)
-            {
-                result = Weapons;
-                rows = Weapons.Count;
-            }
-            else
-            {
-                result = Chunks.Values;
-                rows = Chunks.Count;
+                case Tabs.InfiniteStorage_Misc:
+                    result = Misc.Values;
+                    rows = Misc.Count;
+                    break;
+                case Tabs.InfiniteStorage_Minified:
+                    result = Minified;
+                    rows = Minified.Count;
+                    break;
+                case Tabs.InfiniteStorage_Apparel:
+                    result = Apparel;
+                    rows = Apparel.Count;
+                    break;
+                case Tabs.InfiniteStorage_Weapons:
+                    result = Weapons;
+                    rows = Weapons.Count;
+                    break;
+                default:
+                    result = Chunks.Values;
+                    rows = Chunks.Count;
+                    break;
             }
         }
 
@@ -422,7 +420,7 @@ public class ViewUI : Window
 
     private class MatchedThings : Thing
     {
-        private readonly List<Thing> Things = new List<Thing>();
+        private readonly List<Thing> Things = [];
         public int Count;
 
         public MatchedThings()

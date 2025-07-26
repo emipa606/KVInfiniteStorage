@@ -6,13 +6,13 @@ namespace InfiniteStorage;
 
 public class SettingsController : Mod
 {
-    public static string currentVersion;
+    public static string CurrentVersion;
 
     public SettingsController(ModContentPack content)
         : base(content)
     {
         GetSettings<Settings>();
-        currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
+        CurrentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     public override string SettingsCategory()

@@ -10,8 +10,7 @@ namespace InfiniteStorage;
 
 public class Building_InfiniteStorage : Building_Storage
 {
-    internal readonly SortedDictionary<string, LinkedList<Thing>> storedThings =
-        new SortedDictionary<string, LinkedList<Thing>>();
+    private readonly SortedDictionary<string, LinkedList<Thing>> storedThings = new();
 
     private CompPowerTrader compPowerTrader;
 
@@ -23,7 +22,7 @@ public class Building_InfiniteStorage : Building_Storage
 
     [Unsaved] private float storedWeight;
 
-    public List<Thing> temp;
+    private List<Thing> temp;
 
     private List<Thing> ToDumpOnSpawn;
 
@@ -61,11 +60,11 @@ public class Building_InfiniteStorage : Building_Storage
 
     public bool IncludeInTradeDeals => includeInTradeDeals;
 
-    public bool UsesPower => compPowerTrader != null;
+    private bool UsesPower => compPowerTrader != null;
 
     public bool IsOperational => compPowerTrader == null || compPowerTrader.PowerOn;
 
-    public bool CanAutoCollect { get; set; } = true;
+    private bool CanAutoCollect { get; set; } = true;
 
     public bool IncludeInWorldLookup { get; private set; }
 
@@ -378,7 +377,7 @@ public class Building_InfiniteStorage : Building_Storage
     {
         if (!AllowAdds)
         {
-            BuildingUtil.DropSingleThing(newItem, this, Map, out var _);
+            BuildingUtil.DropSingleThing(newItem, this, Map, out _);
         }
         else if (!Add(newItem))
         {
@@ -505,7 +504,7 @@ public class Building_InfiniteStorage : Building_Storage
 
             if (remove)
             {
-                if (TryRemove(thingDef, out var _))
+                if (TryRemove(thingDef, out _))
                 {
                     list.AddRange(item);
                 }
@@ -536,10 +535,7 @@ public class Building_InfiniteStorage : Building_Storage
                     continue;
                 }
 
-                if (gotten == null)
-                {
-                    gotten = [];
-                }
+                gotten ??= [];
 
                 gotten.Add(item);
             }
@@ -566,10 +562,7 @@ public class Building_InfiniteStorage : Building_Storage
                 }
 
                 DropThing(item, null);
-                if (dropped == null)
-                {
-                    dropped = [];
-                }
+                dropped ??= [];
 
                 dropped.Add(item);
             }
@@ -663,10 +656,7 @@ public class Building_InfiniteStorage : Building_Storage
         {
             var value2 = linkedListNode.Value;
             var next = linkedListNode.Next;
-            if (removed == null)
-            {
-                removed = [];
-            }
+            removed ??= [];
 
             if (value2.stackCount == 0 || value2.Destroyed)
             {
@@ -784,10 +774,7 @@ public class Building_InfiniteStorage : Building_Storage
                     continue;
                 }
 
-                if (ToDumpOnSpawn == null)
-                {
-                    ToDumpOnSpawn = [];
-                }
+                ToDumpOnSpawn ??= [];
 
                 ToDumpOnSpawn.Add(item2);
             }
@@ -938,7 +925,7 @@ public class Building_InfiniteStorage : Building_Storage
         return ViewUI.InfiniteStorageViewTexture;
     }
 
-    public void ApplyFilters()
+    private void ApplyFilters()
     {
         Empty();
         Reclaim();
