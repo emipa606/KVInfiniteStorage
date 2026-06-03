@@ -1,33 +1,61 @@
-# Copilot Instructions for RimWorld Mod: Infinite Storage
+# GitHub Copilot Instructions for [KV] Infinite Storage (Continued)
 
 ## Mod Overview and Purpose
-The "Infinite Storage" mod for RimWorld enhances the storage capabilities within the game by introducing a building that can store an unlimited number of items. The primary goal of this mod is to offer players an efficient way to manage their inventory, reducing clutter and increasing the accessibility of resources within their colonies.
+
+[KV] Infinite Storage (Continued) is an updated version of the original Infinite Storage mod by Kiame Vivacity. The purpose of this mod is to provide players with an efficient and compact storage solution for RimWorld that significantly reduces space requirements by utilizing a single 1x1 storage unit capable of holding vast quantities of items, excluding food. This continued version improves the graphical assets to better align with the vanilla aesthetic and introduces additional storage solutions for specific item types.
 
 ## Key Features and Systems
-- **Building_InfiniteStorage**: A core class that defines the building's behavior, allowing endless items to be stored, managed, and retrieved efficiently.
-    - Methods to add, remove, and manage items, as well as applying filters and handling user interactions.
-- **Harmony Patches**: Numerous patches to integrate the infinite storage functionality seamlessly with existing game mechanics like caravans, reservations, and trade systems.
-- **Settings and UI Enhancements**: Configurable settings for the mod and a user-friendly interface to manage the items stored.
+
+- **Infinite Storage Units:** 
+  - **Size:** 1x1 grid space
+  - **Cost:** 100 metallic materials + 4 components
+  - **Power Requirement:** 1W per stored kg (can be adjusted via Mod Settings)
+  - **Stores:** All items except food
+  - **Placement:** Found under the "Misc" tab in the build menu
+  - **Research Requirements:** Requires "Multi Analyzer" and "Infinite Storage" research
+
+- **Specialty Storage Units:**
+  - **Textile Storage:** Stores textiles, costs 50 wood/stone/steel
+  - **Body Part Storage:** Stores body parts and medicines, costs 50 wood/stone/steel
+  - **Silver Storage:** Stores silver, costs 50 wood/stone/steel
+
+- **Energy Management:** Infinite Storage requires energy for item management, impacting gameplay dynamics by incorporating logistical decisions regarding power usage.
+
+- **Compatibility and Mod Support:** Works with many other mods to enhance gameplay and ensure functionality, although there are compatibility notes listed under Unsupported Mods.
 
 ## Coding Patterns and Conventions
-- **Class & Method Definitions**: Following a consistent naming convention using PascalCase for classes and methods, and camelCase for local variables.
-- **Public vs. Internal Classes**: Use of public static classes for globally accessed patches, and internal classes for more encapsulated functionality.
-- **Usage of Extensions**: `DefModExtension` is used to extend definitions, adhering to RimWorld's modding architecture.
+
+- **Class Structure:** Employs internal and public static classes to handle mod-related functionalities, optimizing for performance and organization.
+- **Naming Conventions:** Follows standard C# naming conventions for classes and methods, ensuring clarity and maintainability. For instance, class names are noun-like `Building_InfiniteStorage` and methods use camelCase `TryGetFirstFilteredItemForMending`.
 
 ## XML Integration
-- [Include any XML-related details here if applicable, such as settings definitions, item categories, or any custom XML utilized by your mod. This section would typically detail how XML files control in-game content such as items, buildings, or settings.]
+
+The mod uses XML to define parts of the game's content, such as objects and configuration data, allowing flexibility in content customization. XML files define storage types, properties, and integrate seamlessly with the C# backend to dictate how these elements should behave in-game.
 
 ## Harmony Patching
-- **Patch Class Structure**: Each patch is structured within a dedicated class, aiding in modularity and specific functionality targeting. Example:
-    - `Patch_Building_Storage_Accepts`: Handles changes to how buildings accept and store items.
-    - `Patch_CaravanExitMapUtility_ExitMapAndCreateCaravan`: Modifies the behavior of exiting maps with caravans.
-- **Adding Prefixes and Postfixes**: Harmony is used to inject code before and/or after the original methods to extend or alter functionality without modifying the game's core code directly.
-- **Error Handling**: Incorporate error handling within patches to maintain game stability, using try-catch blocks where necessary.
+
+The mod utilizes Harmony for patching core game methods to introduce new functionalities or alter existing ones. These changes are crucial for adding the infinite storage mechanics without modifying the actual game source code, maintaining compatibility and ease of updates with new versions of RimWorld.
 
 ## Suggestions for Copilot
-- **Automatic Implementation Suggestions**: Encourage Copilot to propose method signatures, especially when adding new methods consistent with existing ones, to maintain functionality and structure.
-- **Pattern Recognition**: Use common patterns for defining Harmony patches such as prefixes, postfixes, and transpilers.
-- **Code Refactoring**: Aid in refactoring code to improve performance, readability, and maintainability.
-- **Integration with Game Mechanics**: Ensure the suggested code works harmoniously with existing game systems, particularly when dealing with complex mechanics like caravans and trade systems.
 
-By following these copilot guidelines, you can maintain a consistent coding standard across your RimWorld modding project, ensuring reliable integration and seamless gameplay experience.
+1. **Automate Redundant Code:** Utilize Copilot to write repetitive functions or boilerplate code especially in parts like storage logic, UI drawing functions, and XML reading/writing methods.
+   
+2. **Expanded Features Detection:** Suggest automated checks and balances within the harmony patches to reduce errors and improve modularity.
+
+3. **Integrate Error-Handling Routines:** Enhance error reporting and handling routines with Copilot's help to capture and manage mod-specific exceptions elegantly.
+
+4. **Optimize Performance:** Suggest optimizations for large datasets when querying or processing items within the storage system.
+
+5. **UI Enhancements:** Generate ideas for UI improvements such as tooltips and dynamic data visualization for stored items.
+
+6. **Modular Extensions:** Recommend creating additional specialty storage units through XML and classes, enhancing mod extensibility.
+
+Use this guide to maintain quality standards and implement new features effectively while keeping compatibility in mind.
+
+## Project Solution Guidelines
+- Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
+- Use these in-solution XML files as the primary files for reference and modification.
+- The `.github/copilot-instructions.md` file is included in the solution under the `.github` solution folder, so it should be read/modified from within the solution instead of using paths outside the solution. Update this file once only, as it and the parent-path solution reference point to the same file in this workspace.
+- When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
+- In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
+- For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.

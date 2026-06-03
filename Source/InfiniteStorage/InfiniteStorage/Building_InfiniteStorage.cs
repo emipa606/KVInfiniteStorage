@@ -18,6 +18,8 @@ public class Building_InfiniteStorage : Building_Storage
 
     private long lastAutoReclaim;
 
+    [Unsaved] private bool preserveContentsOnMapSwap;
+
     [Unsaved] private int storedCount;
 
     [Unsaved] private float storedWeight;
@@ -153,8 +155,12 @@ public class Building_InfiniteStorage : Building_Storage
     {
         try
         {
-            storedCount = 0;
-            Dispose();
+            if (!preserveContentsOnMapSwap)
+            {
+                storedCount = 0;
+            }
+
+            Dispose(preserveContentsOnMapSwap);
             base.DeSpawn(mode);
         }
         catch (Exception ex)
@@ -163,20 +169,35 @@ public class Building_InfiniteStorage : Building_Storage
         }
     }
 
-    private void Dispose()
+    public override void PreSwapMap()
+    {
+        preserveContentsOnMapSwap = true;
+        base.PreSwapMap();
+    }
+
+    public override void PostSwapMap()
+    {
+        preserveContentsOnMapSwap = false;
+        base.PostSwapMap();
+    }
+
+    private void Dispose(bool preserveContents = false)
     {
         try
         {
-            AllowAdds = false;
-            foreach (var value in storedThings.Values)
+            if (!preserveContents)
             {
-                foreach (var item in value)
+                AllowAdds = false;
+                foreach (var value in storedThings.Values)
                 {
-                    BuildingUtil.DropThing(item, item.stackCount, this, CurrentMap);
+                    foreach (var item in value)
+                    {
+                        BuildingUtil.DropThing(item, item.stackCount, this, CurrentMap);
+                    }
                 }
-            }
 
-            storedThings.Clear();
+                storedThings.Clear();
+            }
         }
         catch (Exception ex)
         {

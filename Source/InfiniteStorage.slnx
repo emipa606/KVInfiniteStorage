@@ -6,4 +6,25 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="InfiniteStorage/InfiniteStorage.csproj" />
+  <Folder Name="/XML/1.6/Defs/ThingDefs/">
+    <File Path="../1.6/Defs/ThingDefs/BaseStorage.xml" />
+    <File Path="../1.6/Defs/ThingDefs/BlockStorage.xml" />
+    <File Path="../1.6/Defs/ThingDefs/BodyPartStorage.xml" />
+    <File Path="../1.6/Defs/ThingDefs/InfiniteStorage.xml" />
+    <File Path="../1.6/Defs/ThingDefs/MeatStorage.xml" />
+    <File Path="../1.6/Defs/ThingDefs/SilverStorage.xml" />
+    <File Path="../1.6/Defs/ThingDefs/TextileStorage.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Patches/">
+    <File Path="../1.6/Patches/SaveStorageSettings.xml" />
+  </Folder>
+  <Folder Name="/XML/1.6/Defs/ResearchProjectDefs/">
+    <File Path="../1.6/Defs/ResearchProjectDefs/ResearchProjects.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/InfiniteStorage.xml" />
+  </Folder>
 </Solution>
