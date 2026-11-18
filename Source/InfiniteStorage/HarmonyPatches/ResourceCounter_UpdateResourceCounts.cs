@@ -7,7 +7,7 @@ namespace InfiniteStorage;
 [HarmonyPatch(typeof(ResourceCounter), nameof(ResourceCounter.UpdateResourceCounts))]
 internal static class ResourceCounter_UpdateResourceCounts
 {
-    private static void Postfix(ResourceCounter __instance)
+    public static void Postfix(ResourceCounter __instance)
     {
         foreach (var infiniteStorage in WorldComp.GetInfiniteStorages(Find.CurrentMap))
         {

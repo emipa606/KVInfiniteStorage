@@ -9,7 +9,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(Designator_Build), nameof(Designator_Build.ProcessInput))]
 internal static class Designator_Build_ProcessInput
 {
-    private static bool Prefix(Designator_Build __instance, Event ev)
+    public static bool Prefix(Designator_Build __instance, Event ev)
     {
         var currentMap = Find.CurrentMap;
         if (__instance.entDef is not ThingDef { MadeFromStuff: true } thingDef ||

@@ -8,7 +8,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(WorkGiver_FixBrokenDownBuilding), nameof(WorkGiver_FixBrokenDownBuilding.FindClosestComponent))]
 internal static class WorkGiver_FixBrokenDownBuilding_FindClosestComponent
 {
-    private static void Postfix(ref Thing __result, Pawn pawn)
+    public static void Postfix(ref Thing __result, Pawn pawn)
     {
         var foundComponent = false;
         if (pawn == null || __result != null)

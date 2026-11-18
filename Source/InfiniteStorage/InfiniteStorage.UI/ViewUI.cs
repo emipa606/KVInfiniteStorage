@@ -49,9 +49,9 @@ public class ViewUI : Window
 
     private readonly Dictionary<string, Thing> Misc = new();
 
-    private readonly List<TabRecord> tabs = [];
-
     private readonly List<Thing> Weapons = [];
+
+    private readonly List<TabRecord> tabs = [];
 
     private bool itemsDropped;
 
@@ -64,10 +64,7 @@ public class ViewUI : Window
     static ViewUI()
     {
         DropTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/drop");
-        //BodyPartViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewbodyparts");
-        //TextileViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewtextile");
         InfiniteStorageViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/view");
-        //TroughViewTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/viewtrough");
         emptyTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/empty");
         collectTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/collect");
         yesSellTexture = ContentFinder<Texture2D>.Get("InfiniteStorage/yessell");
@@ -237,7 +234,7 @@ public class ViewUI : Window
 
             searchText = Widgets.TextEntryLabeled(new Rect(20f, 15f, 300f, 32f),
                 "InfiniteStorage.Search".Translate() + ": ", searchText).ToLower().Trim();
-            searchText = Regex.Replace(searchText, "\\t|\\n|\\r", "");
+            searchText = Regex.Replace(searchText, "\\t|\\n|\\r", "", RegexOptions.None, TimeSpan.FromSeconds(1));
             if (searchText.Length == 0)
             {
                 TabDrawer.DrawTabs(new Rect(0f, num, inRect.width, inRect.height - num), tabs);
@@ -288,14 +285,14 @@ public class ViewUI : Window
     private bool drawRow(Thing thing, string label, float y, int i, Rect r)
     {
         var thing2 = thing is MatchedThings things ? things.First : thing;
-        GUI.BeginGroup(new Rect(0f, y + (i * 32), r.width, 30f));
-        Widgets.ThingIcon(new Rect(0f, 0f, 30f, 30f), thing2);
+        GUI.BeginGroup(new Rect(0f, y + (i * 32), r.width, HEIGHT));
+        Widgets.ThingIcon(new Rect(0f, 0f, 30f, HEIGHT), thing2);
         if (Widgets.InfoCardButton(40f, 0f, thing2))
         {
             Find.WindowStack.Add(new Dialog_InfoCard(thing2));
         }
 
-        Widgets.Label(new Rect(70f, 0f, r.width - 110f, 30f), label);
+        Widgets.Label(new Rect(70f, 0f, r.width - 110f, HEIGHT), label);
         if (InfiniteStorage.IsOperational && Widgets.ButtonImage(new Rect(r.xMax - 20f, 0f, 20f, 20f), DropTexture))
         {
             InfiniteStorage.AllowAdds = false;
@@ -418,7 +415,7 @@ public class ViewUI : Window
         return result;
     }
 
-    private class MatchedThings : Thing
+    private sealed class MatchedThings : Thing
     {
         private readonly List<Thing> Things = [];
         public int Count;

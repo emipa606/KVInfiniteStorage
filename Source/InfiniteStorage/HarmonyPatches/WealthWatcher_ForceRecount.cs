@@ -11,7 +11,7 @@ public static class WealthWatcher_ForceRecount
     private static float lastItemWealth = -1f;
 
     [HarmonyPriority(0)]
-    private static void Postfix(Map ___map, ref float ___wealthItems)
+    public static void Postfix(Map ___map, ref float ___wealthItems)
     {
         var num = tallyWealth(wealthItems: ___wealthItems, storages: WorldComp.GetInfiniteStorages(___map));
         if (lastItemWealth < 1f)

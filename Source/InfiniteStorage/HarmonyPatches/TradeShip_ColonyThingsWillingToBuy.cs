@@ -8,7 +8,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(Pawn_TraderTracker), nameof(Pawn_TraderTracker.ColonyThingsWillingToBuy))]
 internal static class TradeShip_ColonyThingsWillingToBuy
 {
-    private static void Postfix(ref IEnumerable<Thing> __result, Pawn playerNegotiator)
+    public static void Postfix(ref IEnumerable<Thing> __result, Pawn playerNegotiator)
     {
         if (playerNegotiator is not { Map: not null })
         {

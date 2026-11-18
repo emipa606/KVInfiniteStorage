@@ -7,7 +7,7 @@ namespace InfiniteStorage;
 internal static class CaravanFormingUtility_StopFormingCaravan
 {
     [HarmonyPriority(800)]
-    private static void Postfix()
+    public static void Postfix()
     {
         foreach (var allInfiniteStorage in WorldComp.GetAllInfiniteStorages())
         {

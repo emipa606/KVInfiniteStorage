@@ -12,7 +12,7 @@ public static class WorkGiver_Tend_Smart_Medicine
 {
     private static MethodBase target;
 
-    private static bool Prepare()
+    public static bool Prepare()
     {
         var modContentPack = LoadedModManager.RunningMods.FirstOrDefault(m => m.Name == "Smart Medicine");
         if (modContentPack == null)
@@ -39,12 +39,12 @@ public static class WorkGiver_Tend_Smart_Medicine
         return false;
     }
 
-    private static MethodBase TargetMethod()
+    public static MethodBase TargetMethod()
     {
         return target;
     }
 
-    private static void Postfix(ref List<ThingCount> __result, Pawn healer, Pawn patient)
+    public static void Postfix(ref List<ThingCount> __result, Pawn healer, Pawn patient)
     {
         if (healer.Map != patient.Map)
         {

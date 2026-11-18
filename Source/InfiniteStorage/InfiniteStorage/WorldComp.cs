@@ -92,17 +92,15 @@ public class WorldComp : WorldComponent
         }
 
         var num = ingredientSearchRadius * ingredientSearchRadius;
+        foreach (var item in value)
         {
-            foreach (var item in value)
+            if ((item.Position - position).LengthHorizontalSquared < num)
             {
-                if ((item.Position - position).LengthHorizontalSquared < num)
-                {
-                    list.Add(item);
-                }
+                list.Add(item);
             }
-
-            return list;
         }
+
+        return list;
     }
 
     public static bool HasInfiniteStorages(Map map)

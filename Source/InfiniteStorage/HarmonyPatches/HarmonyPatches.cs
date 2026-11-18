@@ -5,7 +5,7 @@ using Verse;
 namespace InfiniteStorage.HarmonyPatches;
 
 [StaticConstructorOnStartup]
-internal class HarmonyPatches
+internal static class HarmonyPatches
 {
     static HarmonyPatches()
     {

@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
 namespace InfiniteStorage;
 
-internal class BuildingUtil
+internal static class BuildingUtil
 {
     public static IEnumerable<Thing> FindThingsOfTypeNextTo(Map map, IntVec3 position, int distance)
     {
@@ -19,13 +20,11 @@ internal class BuildingUtil
         {
             for (var j = num3 - 1; j <= num4; j++)
             {
-                foreach (var item in map.thingGrid.ThingsAt(new IntVec3(i, position.y, j)))
+                foreach (var item in map.thingGrid.ThingsAt(new IntVec3(i, position.y, j)).Where(item =>
+                             reservationManager == null ||
+                             !reservationManager.IsReservedByAnyoneOf(new LocalTargetInfo(item), Faction.OfPlayer)))
                 {
-                    if (reservationManager == null ||
-                        !reservationManager.IsReservedByAnyoneOf(new LocalTargetInfo(item), Faction.OfPlayer))
-                    {
-                        list.Add(item);
-                    }
+                    list.Add(item);
                 }
             }
         }

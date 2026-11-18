@@ -7,7 +7,7 @@ namespace InfiniteStorage.HarmonyPatches;
 internal static class Window_PreClose
 {
     [HarmonyPriority(800)]
-    private static void Postfix()
+    public static void Postfix()
     {
         TradeUtil.ReclaimThings(true);
     }

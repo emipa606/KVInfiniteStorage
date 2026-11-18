@@ -1,56 +1,71 @@
 # GitHub Copilot Instructions for [KV] Infinite Storage (Continued)
 
 ## Mod Overview and Purpose
-
-[KV] Infinite Storage (Continued) is an updated version of the original Infinite Storage mod by Kiame Vivacity. The purpose of this mod is to provide players with an efficient and compact storage solution for RimWorld that significantly reduces space requirements by utilizing a single 1x1 storage unit capable of holding vast quantities of items, excluding food. This continued version improves the graphical assets to better align with the vanilla aesthetic and introduces additional storage solutions for specific item types.
+[KV] Infinite Storage (Continued) is an updated version of Kiame Vivacity's original Infinite Storage mod. The mod allows for the creation of storage structures that can hold an infinite amount of items, except for food. It requires energy to compress and make available the stored items, with the energy requirement increasing linearly as the weight stored increases. The mod includes several specialty storage units for specific item types, such as Body Parts, Textiles, and Silver.
 
 ## Key Features and Systems
-
-- **Infinite Storage Units:** 
-  - **Size:** 1x1 grid space
-  - **Cost:** 100 metallic materials + 4 components
-  - **Power Requirement:** 1W per stored kg (can be adjusted via Mod Settings)
-  - **Stores:** All items except food
-  - **Placement:** Found under the "Misc" tab in the build menu
-  - **Research Requirements:** Requires "Multi Analyzer" and "Infinite Storage" research
-
-- **Specialty Storage Units:**
-  - **Textile Storage:** Stores textiles, costs 50 wood/stone/steel
-  - **Body Part Storage:** Stores body parts and medicines, costs 50 wood/stone/steel
-  - **Silver Storage:** Stores silver, costs 50 wood/stone/steel
-
-- **Energy Management:** Infinite Storage requires energy for item management, impacting gameplay dynamics by incorporating logistical decisions regarding power usage.
-
-- **Compatibility and Mod Support:** Works with many other mods to enhance gameplay and ensure functionality, although there are compatibility notes listed under Unsupported Mods.
+- **Infinite Storage**: A storage structure that can hold an infinite amount of items except for food. It requires energy to operate.
+- **Textile Storage**: A storage unit specifically for textiles.
+- **Body Part Storage**: A storage unit for body parts and medicines.
+- **Silver Storage**: A storage unit for silver.
+- **Harmony Patching**: The mod uses Harmony to patch various RimWorld methods to integrate the new storage systems.
+- **XML Integration**: The mod defines new ThingDefs, ResearchProjectDefs, and minifiedDefs in XML files to create the new storage structures.
 
 ## Coding Patterns and Conventions
-
-- **Class Structure:** Employs internal and public static classes to handle mod-related functionalities, optimizing for performance and organization.
-- **Naming Conventions:** Follows standard C# naming conventions for classes and methods, ensuring clarity and maintainability. For instance, class names are noun-like `Building_InfiniteStorage` and methods use camelCase `TryGetFirstFilteredItemForMending`.
+- **Harmony Patches**: All Harmony patches are located in the `HarmonyPatches` directory. Each patch is a separate class with a `Prefix` or `Postfix` method that modifies the behavior of the patched method.
+- **XML Definitions**: XML files are located in the `Defs` directory. Each file contains definitions for new ThingDefs, ResearchProjectDefs, and minifiedDefs.
+- **Mod Settings**: The mod includes settings in the Mod Settings menu to adjust the power consumption per stored kg.
 
 ## XML Integration
+The mod defines new ThingDefs, ResearchProjectDefs, and minifiedDefs in XML files located in the `Defs` directory. Here is an example of a ThingDef for Infinite Storage:
 
-The mod uses XML to define parts of the game's content, such as objects and configuration data, allowing flexibility in content customization. XML files define storage types, properties, and integrate seamlessly with the C# backend to dictate how these elements should behave in-game.
+xml
+<ThingDef>
+    <defName>InfiniteStorage</defName>
+    <label>Infinite Storage</label>
+    <description>Stores everything except food.</description>
+    <thingClass>Building_Storage</thingClass>
+    <category>Building</category>
+    <costList>
+        <count>100</count>
+        <thingDef>Steel</thingDef>
+    </costList>
+    <size>
+        <x>1</x>
+        <y>1</y>
+    </size>
+    <researchPrerequisites>
+        <li>Multianalyzer</li>
+    </researchPrerequisites>
+    <statBases>
+        <PowerConsumption>1</PowerConsumption>
+    </statBases>
+</ThingDef>
+
 
 ## Harmony Patching
+The mod uses Harmony to patch various RimWorld methods to integrate the new storage systems. Here is an example of a Harmony patch that modifies the behavior of the `Dialog_FormCaravan_PostOpen` method:
 
-The mod utilizes Harmony for patching core game methods to introduce new functionalities or alter existing ones. These changes are crucial for adding the infinite storage mechanics without modifying the actual game source code, maintaining compatibility and ease of updates with new versions of RimWorld.
+csharp
+public class Dialog_FormCaravan_PostOpen
+{
+    [HarmonyPatch(typeof(Dialog_FormCaravan), "PostOpen")]
+    public static class Patch_PostOpen
+    {
+        public static void Prefix(Dialog_FormCaravan __instance)
+        {
+            // Custom code to handle the post-open behavior
+        }
+    }
+}
+
 
 ## Suggestions for Copilot
+- **Harmony Patching**: When working with Harmony patches, Copilot can suggest the correct Harmony patch class and method names based on the patched method.
+- **XML Integration**: When working with XML definitions, Copilot can suggest the correct XML structure and field names based on the existing definitions.
+- **Coding Patterns and Conventions**: Copilot can suggest coding patterns and conventions based on the existing codebase, such as the use of Harmony patches and XML definitions.
 
-1. **Automate Redundant Code:** Utilize Copilot to write repetitive functions or boilerplate code especially in parts like storage logic, UI drawing functions, and XML reading/writing methods.
-   
-2. **Expanded Features Detection:** Suggest automated checks and balances within the harmony patches to reduce errors and improve modularity.
-
-3. **Integrate Error-Handling Routines:** Enhance error reporting and handling routines with Copilot's help to capture and manage mod-specific exceptions elegantly.
-
-4. **Optimize Performance:** Suggest optimizations for large datasets when querying or processing items within the storage system.
-
-5. **UI Enhancements:** Generate ideas for UI improvements such as tooltips and dynamic data visualization for stored items.
-
-6. **Modular Extensions:** Recommend creating additional specialty storage units through XML and classes, enhancing mod extensibility.
-
-Use this guide to maintain quality standards and implement new features effectively while keeping compatibility in mind.
+By following these guidelines, you can ensure that the Copilot suggestions are relevant and useful for developing [KV] Infinite Storage (Continued).
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -59,3 +74,11 @@ Use this guide to maintain quality standards and implement new features effectiv
 - When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
 - In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
 - For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
+
+
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
+

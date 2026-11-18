@@ -9,7 +9,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(WorkGiver_DoBill), nameof(WorkGiver_DoBill.TryFindBestIngredientsHelper))]
 internal static class WorkGiver_DoBill_TryFindBestIngredientsHelper
 {
-    private static void Prefix(List<IngredientCount> ingredients, Pawn pawn,
+    public static void Prefix(List<IngredientCount> ingredients, Pawn pawn,
         ref List<Pair<Building_InfiniteStorage, List<Thing>>> __state)
     {
         if (ingredients == null || pawn == null)
@@ -43,7 +43,7 @@ internal static class WorkGiver_DoBill_TryFindBestIngredientsHelper
         }
     }
 
-    private static void Postfix(ref bool __result, Pawn pawn, List<IngredientCount> ingredients,
+    public static void Postfix(ref bool __result, Pawn pawn, List<IngredientCount> ingredients,
         List<ThingCount> chosen, ref List<Pair<Building_InfiniteStorage, List<Thing>>> __state)
     {
         if (!__result)
@@ -53,17 +53,15 @@ internal static class WorkGiver_DoBill_TryFindBestIngredientsHelper
                 return;
             }
 
+            foreach (var item in __state)
             {
-                foreach (var item in __state)
+                foreach (var item2 in item.Second)
                 {
-                    foreach (var item2 in item.Second)
-                    {
-                        item.First.Add(item2);
-                    }
+                    item.First.Add(item2);
                 }
-
-                return;
             }
+
+            return;
         }
 
         if (pawn == null || ingredients == null || chosen == null)

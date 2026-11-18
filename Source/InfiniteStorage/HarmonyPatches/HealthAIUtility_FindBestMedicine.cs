@@ -8,7 +8,7 @@ namespace InfiniteStorage.HarmonyPatches;
 public static class HealthAIUtility_FindBestMedicine
 {
     [HarmonyPriority(800)]
-    private static void Prefix(Pawn patient)
+    public static void Prefix(Pawn patient)
     {
         foreach (var infiniteStorage in WorldComp.GetInfiniteStorages(patient.Map))
         {

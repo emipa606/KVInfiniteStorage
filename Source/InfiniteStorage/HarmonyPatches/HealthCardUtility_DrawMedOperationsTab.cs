@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -14,7 +15,7 @@ public static class HealthCardUtility_DrawMedOperationsTab
     private static readonly List<Thing> cache = [];
 
     [HarmonyPriority(800)]
-    private static void Prefix()
+    public static void Prefix()
     {
         ListerThings_ThingsInGroup.AvailableMedicalThing.Clear();
         var currentMap = Find.CurrentMap;
@@ -27,13 +28,11 @@ public static class HealthCardUtility_DrawMedOperationsTab
         if (cache == null || ticks - lastUpdate > 10000000)
         {
             cache?.Clear();
-            foreach (var infiniteStorage in WorldComp.GetInfiniteStorages(currentMap))
+            foreach (var infiniteStorage in WorldComp.GetInfiniteStorages(currentMap).Where(infiniteStorage =>
+                         infiniteStorage.def.defName.Equals("IS_BodyPartStorage") ||
+                         infiniteStorage.def.defName.Equals("InfiniteStorage")))
             {
-                if (infiniteStorage.def.defName.Equals("IS_BodyPartStorage") ||
-                    infiniteStorage.def.defName.Equals("InfiniteStorage"))
-                {
-                    cache?.AddRange(infiniteStorage.GetMedicalThings());
-                }
+                cache?.AddRange(infiniteStorage.GetMedicalThings());
             }
 
             lastUpdate = ticks;
@@ -45,7 +44,7 @@ public static class HealthCardUtility_DrawMedOperationsTab
         }
     }
 
-    private static void Postfix()
+    public static void Postfix()
     {
         ListerThings_ThingsInGroup.AvailableMedicalThing.Clear();
     }

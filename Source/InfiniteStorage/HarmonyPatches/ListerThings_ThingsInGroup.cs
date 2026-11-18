@@ -9,7 +9,7 @@ public static class ListerThings_ThingsInGroup
 {
     public static readonly List<Thing> AvailableMedicalThing = [];
 
-    private static void Postfix(ref List<Thing> __result)
+    public static void Postfix(ref List<Thing> __result)
     {
         if (AvailableMedicalThing.Count > 0)
         {

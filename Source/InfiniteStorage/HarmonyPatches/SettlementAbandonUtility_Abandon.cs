@@ -7,7 +7,7 @@ namespace InfiniteStorage.HarmonyPatches;
 internal static class SettlementAbandonUtility_Abandon
 {
     [HarmonyPriority(800)]
-    private static void Prefix(MapParent settlement)
+    public static void Prefix(MapParent settlement)
     {
         WorldComp.Remove(settlement.Map);
     }

@@ -7,7 +7,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(HistoryAutoRecorder), nameof(HistoryAutoRecorder.ExposeData))]
 public static class HistoryAutoRecorder_ExposeData
 {
-    private static void Postfix(HistoryAutoRecorder __instance)
+    public static void Postfix(HistoryAutoRecorder __instance)
     {
         if (Scribe.mode != LoadSaveMode.PostLoadInit)
         {

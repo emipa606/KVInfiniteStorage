@@ -7,7 +7,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(FactionDialogMaker), nameof(FactionDialogMaker.AmountSendableSilver))]
 public static class FactionDialogMaker_AmountSendableSilver
 {
-    private static void Prefix(Map map)
+    public static void Prefix(Map map)
     {
         foreach (var infiniteStorage in WorldComp.GetInfiniteStorages(map))
         {

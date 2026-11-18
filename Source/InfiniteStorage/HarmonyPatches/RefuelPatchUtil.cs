@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -69,12 +70,9 @@ public static class RefuelPatchUtil
             hashSet.Add(item);
         }
 
-        foreach (var item2 in droppedAndStorage)
+        foreach (var item2 in droppedAndStorage.Where(item => !hashSet.Contains(item.Key)))
         {
-            if (!hashSet.Contains(item2.Key))
-            {
-                item2.Value.Add(item2.Key);
-            }
+            item2.Value.Add(item2.Key);
         }
 
         hashSet.Clear();

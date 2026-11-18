@@ -7,7 +7,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(ItemAvailability), nameof(ItemAvailability.ThingsAvailableAnywhere))]
 internal static class ItemAvailability_ThingsAvailableAnywhere
 {
-    private static void Postfix(ref bool __result, ItemAvailability __instance, ThingDef need, int amount, Pawn pawn)
+    public static void Postfix(ref bool __result, ItemAvailability __instance, ThingDef need, int amount, Pawn pawn)
     {
         if (__result || pawn == null || pawn.Faction != Faction.OfPlayer)
         {

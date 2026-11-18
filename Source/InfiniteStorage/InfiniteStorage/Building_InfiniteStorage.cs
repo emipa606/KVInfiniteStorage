@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using InfiniteStorage.UI;
 using RimWorld;
@@ -11,6 +12,8 @@ namespace InfiniteStorage;
 public class Building_InfiniteStorage : Building_Storage
 {
     private readonly SortedDictionary<string, LinkedList<Thing>> storedThings = new();
+
+    private List<Thing> ToDumpOnSpawn;
 
     private CompPowerTrader compPowerTrader;
 
@@ -25,8 +28,6 @@ public class Building_InfiniteStorage : Building_Storage
     [Unsaved] private float storedWeight;
 
     private List<Thing> temp;
-
-    private List<Thing> ToDumpOnSpawn;
 
     public IEnumerable<Thing> StoredThings
     {
@@ -114,7 +115,7 @@ public class Building_InfiniteStorage : Building_Storage
             }
 
             var linkedListNode = value2.First;
-            while (linkedListNode.Next != null)
+            while (linkedListNode?.Next != null)
             {
                 var value = linkedListNode.Value;
                 if (!bill.IsFixedOrAllowedIngredient(value.def) || !filter.Allows(value.def))
@@ -321,7 +322,7 @@ public class Building_InfiniteStorage : Building_Storage
         }
     }
 
-    private bool ChosenContains(Thing t, List<ThingCount> chosen)
+    private static bool ChosenContains(Thing t, List<ThingCount> chosen)
     {
         if (chosen == null)
         {
@@ -347,18 +348,15 @@ public class Building_InfiniteStorage : Building_Storage
             return num;
         }
 
-        foreach (var item in value)
+        foreach (var item in value.Where(item => Allows(item, expectedDef, ingrediantFilter)))
         {
-            if (Allows(item, expectedDef, ingrediantFilter))
-            {
-                num += item.stackCount;
-            }
+            num += item.stackCount;
         }
 
         return num;
     }
 
-    private bool Allows(Thing t, ThingDef expectedDef, ThingFilter filter)
+    private static bool Allows(Thing t, ThingDef expectedDef, ThingFilter filter)
     {
         if (filter == null)
         {
@@ -467,12 +465,9 @@ public class Building_InfiniteStorage : Building_Storage
 
             if (!absorbedStack)
             {
-                foreach (var item2 in value)
+                if (value.Any(item => item == thing))
                 {
-                    if (item2 == thing)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
 
                 value.AddLast(thing);
@@ -489,22 +484,14 @@ public class Building_InfiniteStorage : Building_Storage
         return true;
     }
 
-    private float GetThingWeight(Thing thing, int count)
+    private static float GetThingWeight(Thing thing, int count)
     {
         return thing.GetStatValue(StatDefOf.Mass) * count;
     }
 
     private static bool IsBodyPart(ThingDef td)
     {
-        foreach (var thingCategory in td.thingCategories)
-        {
-            if (thingCategory.defName.Contains("BodyPart"))
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return td.thingCategories.Any(thingCategory => thingCategory.defName.Contains("BodyPart"));
     }
 
     public IEnumerable<Thing> GetMedicalThings(bool includeBodyParts = true, bool remove = false)
@@ -517,7 +504,7 @@ public class Building_InfiniteStorage : Building_Storage
                 continue;
             }
 
-            var thingDef = item.First.Value.def;
+            var thingDef = item.First?.Value.def;
             if (thingDef is not { IsMedicine: true } && (!includeBodyParts || !IsBodyPart(thingDef)))
             {
                 continue;
@@ -544,7 +531,7 @@ public class Building_InfiniteStorage : Building_Storage
         gotten = null;
         foreach (var value in storedThings.Values)
         {
-            if (value.Count <= 0 || !bill.IsFixedOrAllowedIngredient(value.First.Value.def))
+            if (value.Count <= 0 || !bill.IsFixedOrAllowedIngredient(value.First?.Value.def))
             {
                 continue;
             }
@@ -570,7 +557,7 @@ public class Building_InfiniteStorage : Building_Storage
         dropped = null;
         foreach (var value in storedThings.Values)
         {
-            if (value.Count <= 0 || !ic.filter.Allows(value.First.Value.def))
+            if (value.Count <= 0 || !ic.filter.Allows(value.First?.Value.def))
             {
                 continue;
             }
@@ -602,7 +589,7 @@ public class Building_InfiniteStorage : Building_Storage
     {
         if (thingDef != null && storedThings.TryGetValue(thingDef.ToString(), out var value) && value.Count > 0)
         {
-            t = value.First.Value;
+            t = value.First?.Value;
             return true;
         }
 
@@ -614,12 +601,17 @@ public class Building_InfiniteStorage : Building_Storage
     {
         foreach (var value2 in storedThings.Values)
         {
-            if (value2.Count <= 0 || !filter.Allows(value2.First.Value.def))
+            if (value2.Count <= 0 || !filter.Allows(value2.First?.Value.def))
             {
                 continue;
             }
 
-            var value = value2.First.Value;
+            var value = value2.First?.Value;
+            if (value == null)
+            {
+                continue;
+            }
+
             var count = Math.Min(value.stackCount, value.def.stackLimit);
             return TryRemove(value, count, out removed);
         }
@@ -862,7 +854,7 @@ public class Building_InfiniteStorage : Building_Storage
     public override IEnumerable<Gizmo> GetGizmos()
     {
         var gizmos = base.GetGizmos();
-        var list = gizmos == null ? new List<Gizmo>(1) : [..gizmos];
+        var list = gizmos == null ? new List<Gizmo>(1) : [.. gizmos];
         var hashCode = "InfiniteStorage".GetHashCode();
         list.Add(new Command_Action
         {
@@ -941,7 +933,7 @@ public class Building_InfiniteStorage : Building_Storage
         return false;
     }
 
-    private Texture2D GetGizmoViewTexture()
+    private static Texture2D GetGizmoViewTexture()
     {
         return ViewUI.InfiniteStorageViewTexture;
     }

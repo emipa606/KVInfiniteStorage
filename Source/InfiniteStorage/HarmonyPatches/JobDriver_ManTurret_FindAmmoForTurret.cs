@@ -7,7 +7,7 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(JobDriver_ManTurret), nameof(JobDriver_ManTurret.FindAmmoForTurret))]
 internal static class JobDriver_ManTurret_FindAmmoForTurret
 {
-    private static void Prefix(Pawn pawn, Building_TurretGun gun)
+    public static void Prefix(Pawn pawn, Building_TurretGun gun)
     {
         if (!pawn.IsColonist || pawn.Map != gun.Map)
         {

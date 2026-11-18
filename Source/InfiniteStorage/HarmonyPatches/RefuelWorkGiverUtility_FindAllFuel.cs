@@ -8,12 +8,12 @@ namespace InfiniteStorage.HarmonyPatches;
 [HarmonyPatch(typeof(RefuelWorkGiverUtility), nameof(RefuelWorkGiverUtility.FindAllFuel))]
 public static class RefuelWorkGiverUtility_FindAllFuel
 {
-    private static void Prefix(Pawn pawn, Thing refuelable)
+    public static void Prefix(Pawn pawn, Thing refuelable)
     {
         RefuelPatchUtil.Prefix(pawn, refuelable);
     }
 
-    private static void Postfix(List<Thing> __result)
+    public static void Postfix(List<Thing> __result)
     {
         RefuelPatchUtil.Postfix(__result);
     }
